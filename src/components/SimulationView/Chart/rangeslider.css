@@ -1,0 +1,130 @@
+.customRangeSlider {
+  width: 35rem; /* Fixed width for the slider */
+  padding: 8px 0;
+  font-size: 10px;
+}
+
+.customRangeSlider .rangeSlider {
+  padding-top: 16px;
+  position: relative;
+}
+
+.customRangeSlider .rangeSlider,
+.customRangeSlider .rangeSliderTrack {
+  width: 100%; /* Ensures the track takes full width */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.customRangeSlider .rangeLabel,
+.customRangeSlider .rangeSlider {
+  width: 100%; /* Ensures labels and sliders take full width */
+}
+
+.customRangeSlider .selectedRange {
+  right: 0;
+  height: 8px;
+  border-radius: 4px;
+  background-color: #137CBD; /* Color for the selected range */
+}
+
+.customRangeSlider .selectedRangeEnd,
+.customRangeSlider .selectedRangeStart {
+  width: 50%; /* Adjust as necessary */
+  z-index: 4;
+  height: 8px;
+  position: relative;
+  border-radius: 3px;
+  background: #ebebeb; /* Background for the range ends */
+}
+
+.customRangeSlider .selectedRange,
+.customRangeSlider .rangeSliderTrack {
+  left: 0;
+  top: 22px; /* Positioning of the selected range */
+  position: absolute; /* Absolute positioning for correct layering */
+}
+
+.customRangeSlider .endValue,
+.customRangeSlider .startValue {
+  top: 0;
+  margin-left: -24px; /* Adjust as necessary for positioning */
+  position: absolute; /* Ensure they are positioned correctly */
+}
+
+.customRangeSlider .endValue,
+.customRangeSlider .startValue,
+.customRangeSlider .endDateInput,
+.customRangeSlider .startDateInput {
+  width: 46px; /* Fixed width for input fields */
+  font-weight: 700;
+  color: #137CBD; /* Color for input fields */
+  font-size: 10px;
+}
+
+.customRangeSlider .endDateInput,
+.customRangeSlider .startDateInput {
+  z-index: 5;
+  width: 50%; /* Ensure inputs take half the width */
+  position: relative;
+  appearance: none; /* Reset appearance for modern browsers */
+  -webkit-appearance: none; /* Reset appearance for WebKit browsers */
+  -moz-appearance: none; /* Reset appearance for Firefox */
+  background-color: transparent; /* Transparent background */
+}
+
+.customRangeSlider .date-stops {
+  z-index: 2;
+  display: flex;
+  margin-top: 4px;
+  position: relative;
+  justify-content: space-between; /* Space between date stops */
+}
+
+.customRangeSlider .date-stops span {
+  display: block;
+}
+
+/* Styles for slider thumbs */
+.customRangeSlider .endDateInput::-webkit-slider-thumb,
+.customRangeSlider .startDateInput::-webkit-slider-thumb {
+  width: 20px;
+  height: 20px;
+  cursor: pointer; /* Pointer cursor for thumb */
+  -webkit-appearance: none; /* Reset appearance for WebKit browsers */
+  background: #fff; /* Background for the thumb */
+  border-radius: 50%; /* Circular thumb */
+  box-shadow: 0 0 2px #005cc8; /* Shadow for the thumb */
+}
+
+.customRangeSlider .endDateInput::-moz-range-thumb,
+.customRangeSlider .startDateInput::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  cursor: pointer; /* Pointer cursor for thumb */
+  border-radius: 50%; /* Circular thumb */
+  background: #fff; /* Background for the thumb */
+  box-shadow: 0 0 2px #005cc8; /* Shadow for the thumb */
+}
+
+/* Additional styles for Internet Explorer */
+.customRangeSlider .endDateInput::-ms-thumb,
+.customRangeSlider .startDateInput::-ms-thumb {
+  width: 20px;
+  height: 20px;
+  cursor: pointer; /* Pointer cursor for thumb */
+  border-radius: 50%; /* Circular thumb */
+  background: #fff; /* Background for the thumb */
+  box-shadow: 0 0 2px #005cc8; /* Shadow for the thumb */
+}
+
+/* For better compatibility with range inputs */
+.customRangeSlider .endDateInput::-ms-track,
+.customRangeSlider .startDateInput::-ms-track {
+  width: 100%;
+  height: 8px;
+  background: transparent; /* Make track transparent */
+  border-color: transparent;
+  color: transparent; /* Hide the default track color */
+}

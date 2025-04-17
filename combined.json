@@ -1,0 +1,228 @@
+{
+  "0": "SITE_DARMSTAD",
+  "1": "SITE_NANTONG",
+  "2": "SITE_RIO",
+  "3": "SITE_BARI",
+  "4": "SITE_ATUSA",
+  "5": "SITE_AUBONNE",
+  "6": "SITE_MOLLET",
+  "7": {
+    "cycle_key": "2025_F0_CONSTR",
+    "by_scenario": "F0_BIOPHARMA_CONSTR_2024_11_20",
+    "cutoff_date": "2024-11-16"
+  },
+  "8": {
+    "cycle_key": "2024_F2_UNCONSTR",
+    "by_scenario": "F2_BIOPHARMA_UNCONSTR_2024_05_23",
+    "cutoff_date": "2024-05-18"
+  },
+  "9": {
+    "cycle_key": "2024_F2_MAX_FC_API-CON",
+    "by_scenario": "F2_BIOTECH_MAX_FC_API-CON_2024_05_31",
+    "cutoff_date": "2024-05-30"
+  },
+  "10": {
+    "cycle_key": "SOP_2025_01_CONSTR_FINAL",
+    "by_scenario": "SOP_JAN_2025_SCFINAL",
+    "cutoff_date": "2025-01-25"
+  },
+  "11": {
+    "cycle_key": "2025_F0_FP-DP-API-UNC",
+    "by_scenario": "F0_BIOTECH_FP-DP-API-UNC_2024_11_25",
+    "cutoff_date": "2024-11-21"
+  },
+  "12": {
+    "cycle_key": "2024_F1_UNCONSTR",
+    "by_scenario": "F1_BIOPHARMA_UNCONSTR_2024_02_28",
+    "cutoff_date": "2024-02-29"
+  },
+  "13": {
+    "cycle_key": "2025_F0_FP-DP-CON-API-UNC",
+    "by_scenario": "F0_BIOTECH_FP-DP-CON-API-UNC_2024_11_25",
+    "cutoff_date": "2024-11-21"
+  },
+  "14": {
+    "cycle_key": "2024_F2_FP-DP-API-UNC",
+    "by_scenario": "F2_BIOTECH_FP-DP-API-UNC_2024_05_30",
+    "cutoff_date": "2024-05-29"
+  },
+  "15": {
+    "cycle_key": "2024_F1_CONSTR",
+    "by_scenario": "F1_BIOPHARMA_CONSTR_2024_02_28",
+    "cutoff_date": "2024-02-29"
+  },
+  "16": {
+    "cycle_key": "2024_F3_CONSTR",
+    "by_scenario": "F3_BIOPHARMA_CONSTR_2024_08_29",
+    "cutoff_date": "2024-08-24"
+  },
+  "17": {
+    "cycle_key": "2025_F1_UNCONSTR",
+    "by_scenario": "F1_BIOPHARMA_UNCONSTR_2025_02_26",
+    "cutoff_date": "2025-02-22"
+  },
+  "18": {
+    "cycle_key": "2025_F0_UNCONSTR",
+    "by_scenario": "F0_BIOPHARMA_UNCONSTR_2024_11_20",
+    "cutoff_date": "2024-11-16"
+  },
+  "19": {
+    "cycle_key": "2024_F3_FP-DP-API-UNC",
+    "by_scenario": "F3_BIOTECH_FP-DP-API-UNC_2024_09_04",
+    "cutoff_date": "2024-09-03"
+  },
+  "20": {
+    "cycle_key": "2025_F1_FP-DP-CON-API-UNC",
+    "by_scenario": "F1_BIOTECH_FP-DP-CON-API-UNC_2025_03_01",
+    "cutoff_date": "2025-02-28"
+  },
+  "21": {
+    "cycle_key": "2025_F0_MAX_FC_API-CON",
+    "by_scenario": "F0_BIOTECH_MAX_FC_API-CON_2024_11_22",
+    "cutoff_date": "2024-11-21"
+  },
+  "22": {
+    "cycle_key": "2024_F2_CONSTR",
+    "by_scenario": "F2_BIOPHARMA_CONSTR_2024_05_23",
+    "cutoff_date": "2024-05-18"
+  },
+  "23": {
+    "cycle_key": "SOP_2025_01_UNCONSTR",
+    "by_scenario": "SOP_JAN_2025_UNCONSTR",
+    "cutoff_date": "2025-01-25"
+  },
+  "24": {
+    "cycle_key": "2025_F1_FP-DP-API-UNC",
+    "by_scenario": "F1_BIOTECH_FP-DP-API-UNC_2025_03_01",
+    "cutoff_date": "2025-02-28"
+  },
+  "25": {
+    "simulation_id": "SITE_MOLLET_2024_F0_MAX_F_C_1740742643249",
+    "plant": "SITE_MOLLET",
+    "simulation_name": "Mockup test",
+    "simulation_description": "Test",
+    "cycle_key": "2024_F0_MAX_F_C",
+    "by_scenario": "F0_BIOTECH_MAX_F_C_2023_11_27",
+    "cutoff_date": "2023-11-27",
+    "init_date": "2023-11-01",
+    "end_date": "2025-11-01",
+    "created_at": 1740742643360,
+    "created_by": "c15ec876-8e56-41d3-895c-6f55111b03b4",
+    "created_by_full_name": "Karthick M",
+    "modified_at": 1740742643360,
+    "modified_by": "c15ec876-8e56-41d3-895c-6f55111b03b4",
+    "modified_by_full_name": "Karthick M",
+    "status": "NOT_RUN"
+  },
+  "26": {
+    "simulation_id": "SITE_RIO_2024_F1_CONSTR_1740742585",
+    "plant": "SITE_RIO",
+    "simulation_name": "test",
+    "simulation_description": "asd",
+    "cycle_key": "2024_F1_CONSTR",
+    "by_scenario": "F1_BIOPHARMA_CONSTR_2024_02_28",
+    "cutoff_date": "2024-02-29",
+    "init_date": "2025-02-28",
+    "end_date": "2025-02-28",
+    "created_at": 1740742603098,
+    "created_by": "c15ec876-8e56-41d3-895c-6f55111b03b4",
+    "created_by_full_name": "Karthick M",
+    "modified_at": 1740742603098,
+    "modified_by": "c15ec876-8e56-41d3-895c-6f55111b03b4",
+    "modified_by_full_name": "Karthick M",
+    "status": "NOT_RUN"
+  },
+  "27": {
+    "simulation_id": "SITE_RIO_2024_F1_CONSTR_1740742376",
+    "plant": "SITE_RIO",
+    "simulation_name": "sdsdsd",
+    "simulation_description": "sdsdsdsdsd",
+    "cycle_key": "2024_F1_CONSTR",
+    "by_scenario": "F1_BIOPHARMA_CONSTR_2024_02_28",
+    "cutoff_date": "2024-02-29",
+    "init_date": "2025-02-28",
+    "end_date": "2025-03-01",
+    "created_at": 1740742406399,
+    "created_by": "c15ec876-8e56-41d3-895c-6f55111b03b4",
+    "created_by_full_name": "Karthick M",
+    "modified_at": 1740742406399,
+    "modified_by": "c15ec876-8e56-41d3-895c-6f55111b03b4",
+    "modified_by_full_name": "Karthick M",
+    "status": "NOT_RUN"
+  },
+  "28": {
+    "simulation_id": "SITE_MOLLET_2024_F1_CONSTR_1740733557",
+    "plant": "SITE_MOLLET",
+    "simulation_name": "Test",
+    "simulation_description": "test",
+    "cycle_key": "2024_F1_CONSTR",
+    "by_scenario": "F1_BIOPHARMA_CONSTR_2024_02_28",
+    "cutoff_date": "2024-02-29",
+    "init_date": "2025-02-28",
+    "end_date": "2025-02-28",
+    "created_at": 1740733575663,
+    "created_by": "c15ec876-8e56-41d3-895c-6f55111b03b4",
+    "created_by_full_name": "Karthick M",
+    "modified_at": 1740733575663,
+    "modified_by": "c15ec876-8e56-41d3-895c-6f55111b03b4",
+    "modified_by_full_name": "Karthick M",
+    "status": "NOT_RUN"
+  },
+  "29": {
+    "simulation_id": "SITE_MOLLET_CONSTR_PLAN_2025_F0_1736754296461",
+    "plant": "SITE_MOLLET",
+    "simulation_name": "Mollet L14 Capacity simulation",
+    "simulation_description": "•\tObjective of the Scenario: Evaluate L14 d/c ratio with 24x7 with an increase of ALU/ALU of 10% of the volume\n•\tInitial configuration: L14 in Q1 is 24x5 and from Q2 is 24x6\n•\tCustomized variables: Increase L14 shift model from Q2 to 24x6\n•\tKey performance indicators: D/C ratio of L14\n•\tReason for changes: Evaluate alternatives for Stagid (Back up lines)\n•\tTraceability\nReviewers\nApproval \n\n•\tResults and Conclusion",
+    "catalog_key": "CONSTR_PLAN",
+    "cycle_key": "2025_F0",
+    "by_scenario": "F0_BIOPHARMA_CONSTR_2024_11_20",
+    "cutoff_date": "2024-11-16",
+    "init_date": "2025-01-01",
+    "end_date": "2026-01-01",
+    "created_at": 1736754296571,
+    "created_by": "473d0983-112f-449e-9959-a242c468a55f",
+    "created_by_full_name": "Lidia Cortes Rodriguez",
+    "modified_at": 1739262512775,
+    "modified_by": "0d72f8d6-6ba3-4cd8-8c16-524c3a76bb10",
+    "modified_by_full_name": "Frederic Joly",
+    "status": "NOT_RUN"
+  },
+  "30": {
+    "simulation_id": "SITE_MOLLET_CONSTR_PLAN_2025_F0_1736927001081",
+    "plant": "SITE_MOLLET",
+    "simulation_name": "Mollet L14",
+    "simulation_description": "Hola",
+    "catalog_key": "CONSTR_PLAN",
+    "cycle_key": "2025_F0",
+    "by_scenario": "F0_BIOPHARMA_CONSTR_2024_11_20",
+    "cutoff_date": "2024-11-16",
+    "init_date": "2025-01-01",
+    "end_date": "2026-12-01",
+    "created_at": 1736927001144,
+    "created_by": "473d0983-112f-449e-9959-a242c468a55f",
+    "created_by_full_name": "Lidia Cortes Rodriguez",
+    "modified_at": 1737038094428,
+    "modified_by": "2ce9ebaa-5448-41a0-a4f1-ab8dbeae54b5",
+    "modified_by_full_name": "Pol Ferrer Lopez",
+    "status": "NOT_RUN"
+  },
+  "31": {
+    "simulation_id": "SITE_RIO_CONSTR_PLAN_2025_F0_1734372716286",
+    "plant": "SITE_RIO",
+    "simulation_name": "Test Javier 2025_F0 v2",
+    "simulation_description": "",
+    "catalog_key": "CONSTR_PLAN",
+    "cycle_key": "2025_F0",
+    "by_scenario": "F0_BIOPHARMA_CONSTR_2024_11_20",
+    "cutoff_date": "2024-11-16",
+    "init_date": "2024-11-01",
+    "end_date": "2026-11-01",
+    "created_at": 1734372716420,
+    "created_by": "46eb075b-cd37-400a-84c0-96c22c269089",
+    "created_by_full_name": "Javier Guzman Munoz",
+    "modified_at": 1734688166656,
+    "modified_by": "46eb075b-cd37-400a-84c0-96c22c269089",
+    "modified_by_full_name": "Javier Guzman Munoz",
+    "status": "RUNNING"
+  }
+}

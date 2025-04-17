@@ -1,0 +1,36 @@
+
+.summary-slider-tab table {
+  color: #1c2127;
+  font-weight: normal;
+  letter-spacing: 0;
+  text-transform: none;
+  text-align: left;
+  font-family: Lato, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  box-sizing: border-box; /* Ensure padding/border are included in width */
+  width: 100%; /* Expand table to container width */
+  border: 1px solid #ddd;
+  border: none;
+  border-collapse: collapse;
+ overflow-x: hidden !important;
+}
+
+.summary-slider-tab th {
+  text-align: center;
+  height: 20px;
+  z-index: 10;
+  padding: 8px;
+}
+
+.summary-slider-tab td {
+  font-weight: bold;
+  text-align: center;
+  padding: 3px 5px;
+  border: 1px solid #ddd;
+  border-bottom: none;
+  font-size: 12px;
+}
+
+
+

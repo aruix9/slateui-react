@@ -1,0 +1,94 @@
+.compareSimTab ld-tab {
+    color: aliceblue;
+    --ld-tab-padding-x: 5rem;
+    --ld-tab-bg-col : var(--ld-col-rb-100);
+    --ld-tab-text-col: var(--ld-thm-primary);
+    --ld-tab-bg-col-active: var(--ld-thm-primary);
+    --ld-tab-bg-col-focus: var(--ld-col-neutral-600);
+    --ld-tab-bg-col-hover:var(--ld-thm-primary);
+    --id-tab-font-col-active :  aliceblue;
+}
+
+.comparsionTable {
+    margin-top: 1rem; /* mt-4 */
+    max-height: 30rem; /* max-h-[32rem] */
+    width: 100%; /* w-full */
+    overflow-y: auto; /* overflow-y-scroll */
+    overflow-x: auto; /* overflow-x-scroll */
+    position: relative; 
+}
+
+#comparsion-summary-table table {
+    color: #ffffff;
+    font-weight: 0;
+    letter-spacing: 0;
+    text-transform: none;
+    text-align: left;
+    font-family: Lato,Helvetica,Arial,sans-serif;
+    font-weight: normal;
+    color: #333;
+    font-size: 14px;
+    line-height: 20px;
+    box-sizing: inherit;
+    display: block;
+    position: relative;
+    border: 0.1px solid #ddd;
+    max-height: 1000px; /* Adjust the height as needed */
+    border-collapse: collapse;
+    table-layout: fixed;
+
+}
+
+#comparsion-summary-table thead {
+    position:sticky;
+    top:0;
+    z-index: 30;
+}
+
+#comparsion-summary-table th {
+    background-color: #C5CBD3;
+    text-align: center;
+    overflow-y: auto; 
+    height: 20px; 
+    position: sticky; 
+    top: 0;
+    z-index: 10;
+    color: #1c2127;
+    white-space: nowrap;
+    padding: 8px;
+}
+
+#comparsion-summary-table td {
+    border-top: 1px solid #ddd;
+    text-align: right;
+    overflow: auto;
+    position: relative;
+    padding-right:8px;
+    white-space: nowrap;
+    padding: 3px 5px;
+}
+
+#comparsion-summary-table th.sticky, td.sticky {
+    position: sticky;
+    left: 0;
+    z-index: 20;
+    background-color: #f2f2f2;
+}
+
+#comparsion-summary-table .sticky-adjust {
+    position: sticky;
+    z-index: 20;
+}
+
+#comparsion-summary-table .checkbox-cell {
+    width: 40px; /* Adjust this value as needed */
+    text-align: center;
+}
+
+#comparsion-summary-table .remark-border {
+    border-top: 4px solid black; 
+    border-bottom: 4px solid black;
+}
+
+
+

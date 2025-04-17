@@ -1,0 +1,30 @@
+/* styles.css */
+.ld-modal-custom {
+    --ld-modal-max-inline-size: 60%;
+}
+
+.custom-select {
+    width: 100%; /* Full width */
+    padding: 8px; /* Padding for better spacing */
+    border: 2px solid #d1d5db; /* Light gray border */
+    border-radius: 4px; /* Rounded corners */
+    background-color: #fff; /* White background */
+    font-size: 12px; /* Font size */
+    color: #1f2937; /* Dark gray text color */
+    appearance: none; /* Remove default dropdown arrow */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="none" viewBox="0 0 16 16"><path fill="%231f2937" d="M4.5 6l3.5 4 3.5-4H4.5z"/></svg>'); /* Custom dropdown arrow */
+    background-repeat: no-repeat; /* Prevent background image from repeating */
+    background-position: right 10px center; /* Position the arrow */
+    background-size: 12px; /* Size of the arrow */
+    transition: border-color 0.3s; /* Smooth transition for border color */
+}
+
+.custom-select:focus {
+    border-color: #3b82f6; /* Blue border on focus */
+    outline: none; /* Remove default outline */
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); /* Add shadow on focus */
+}
+
+.custom-select option {
+    padding: 10px; /* Padding for options */
+}

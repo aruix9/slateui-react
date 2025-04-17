@@ -1,0 +1,29 @@
+.app {
+  max-width: 1000px;
+  margin: 50px auto 0 auto;
+  background-color: aliceblue;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.number-input {
+  margin: 10px 0;
+  width: 100%;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.button-container {
+  margin-top: 20px;
+}
+
+/* .navbarHeader{
+  background-color: rgb(8, 53, 88);
+} */
+
+.appContainer{
+  background-color: #F8F8FC;
+}

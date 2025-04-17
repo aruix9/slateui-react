@@ -1,0 +1,646 @@
+{
+  "MSA-PACK-TOTSHIFT": {
+    "DATE": [
+      "2025-04-01",
+      "2025-05-01"
+    ],
+    "ORIGINAL_HOURS": [
+      0,
+      728
+    ],
+    "ORIGINAL_QTY": [
+      0,
+      715008
+    ],
+    "ORIGINAL_BATCHES": [
+      0,
+      23150.09
+    ],
+    "ORIGINAL_PALLETS": [
+      0,
+      351
+    ],
+    "ORIGINAL_ABSORPTION": [
+      0,
+      1869070
+    ],
+    "HOURS": [
+      0,
+      728
+    ],
+    "QTY": [
+      0,
+      715008
+    ],
+    "BATCHES": [
+      0,
+      23150.09
+    ],
+    "PALLETS": [
+      0,
+      351
+    ],
+    "ABSORPTION": [
+      0,
+      1869070
+    ]
+  },
+  "MSA-FDF-L7-FILL": {
+    "DATE": [
+      "2025-04-01",
+      "2025-05-01"
+    ],
+    "ORIGINAL_HOURS": [
+      0,
+      0
+    ],
+    "ORIGINAL_QTY": [
+      0,
+      0
+    ],
+    "ORIGINAL_BATCHES": [
+      0,
+      0
+    ],
+    "ORIGINAL_PALLETS": [
+      0,
+      0
+    ],
+    "ORIGINAL_ABSORPTION": [
+      0,
+      0
+    ],
+    "HOURS": [
+      0,
+      0
+    ],
+    "QTY": [
+      0,
+      0
+    ],
+    "BATCHES": [
+      0,
+      0
+    ],
+    "PALLETS": [
+      0,
+      0
+    ],
+    "ABSORPTION": [
+      0,
+      0
+    ]
+  },
+  "MSA-PACK-PL02-AUB": {
+    "DATE": [
+      "2025-04-01",
+      "2025-05-01"
+    ],
+    "ORIGINAL_HOURS": [
+      0,
+      36
+    ],
+    "ORIGINAL_QTY": [
+      0,
+      42869
+    ],
+    "ORIGINAL_BATCHES": [
+      0,
+      104.75
+    ],
+    "ORIGINAL_PALLETS": [
+      0,
+      49
+    ],
+    "ORIGINAL_ABSORPTION": [
+      0,
+      308192
+    ],
+    "HOURS": [
+      0,
+      36
+    ],
+    "QTY": [
+      0,
+      42869
+    ],
+    "BATCHES": [
+      0,
+      104.75
+    ],
+    "PALLETS": [
+      0,
+      49
+    ],
+    "ABSORPTION": [
+      0,
+      308192
+    ]
+  },
+  "MSA-FDF-L2-FILL": {
+    "DATE": [
+      "2025-04-01",
+      "2025-05-01"
+    ],
+    "ORIGINAL_HOURS": [
+      0,
+      33
+    ],
+    "ORIGINAL_QTY": [
+      0,
+      6
+    ],
+    "ORIGINAL_BATCHES": [
+      0,
+      0
+    ],
+    "ORIGINAL_PALLETS": [
+      0,
+      0
+    ],
+    "ORIGINAL_ABSORPTION": [
+      0,
+      0
+    ],
+    "HOURS": [
+      0,
+      33
+    ],
+    "QTY": [
+      0,
+      6
+    ],
+    "BATCHES": [
+      0,
+      0
+    ],
+    "PALLETS": [
+      0,
+      0
+    ],
+    "ABSORPTION": [
+      0,
+      0
+    ]
+  },
+  "MSA-FDF-L3-FILL": {
+    "DATE": [
+      "2025-04-01",
+      "2025-05-01"
+    ],
+    "ORIGINAL_HOURS": [
+      0,
+      0
+    ],
+    "ORIGINAL_QTY": [
+      0,
+      0
+    ],
+    "ORIGINAL_BATCHES": [
+      0,
+      0
+    ],
+    "ORIGINAL_PALLETS": [
+      0,
+      0
+    ],
+    "ORIGINAL_ABSORPTION": [
+      0,
+      0
+    ],
+    "HOURS": [
+      0,
+      0
+    ],
+    "QTY": [
+      0,
+      0
+    ],
+    "BATCHES": [
+      0,
+      0
+    ],
+    "PALLETS": [
+      0,
+      0
+    ],
+    "ABSORPTION": [
+      0,
+      0
+    ]
+  },
+  "MSA-PACK-PL05-PEN": {
+    "DATE": [
+      "2025-04-01",
+      "2025-05-01"
+    ],
+    "ORIGINAL_HOURS": [
+      0,
+      120
+    ],
+    "ORIGINAL_QTY": [
+      0,
+      187614
+    ],
+    "ORIGINAL_BATCHES": [
+      0,
+      22101.26
+    ],
+    "ORIGINAL_PALLETS": [
+      0,
+      119
+    ],
+    "ORIGINAL_ABSORPTION": [
+      0,
+      554883
+    ],
+    "HOURS": [
+      0,
+      120
+    ],
+    "QTY": [
+      0,
+      187614
+    ],
+    "BATCHES": [
+      0,
+      22101.260000000002
+    ],
+    "PALLETS": [
+      0,
+      119
+    ],
+    "ABSORPTION": [
+      0,
+      554883
+    ]
+  },
+  "MSA-PACK-PL08-AUB": {
+    "DATE": [
+      "2025-04-01",
+      "2025-05-01"
+    ],
+    "ORIGINAL_HOURS": [
+      0,
+      53
+    ],
+    "ORIGINAL_QTY": [
+      0,
+      89352
+    ],
+    "ORIGINAL_BATCHES": [
+      0,
+      509.94
+    ],
+    "ORIGINAL_PALLETS": [
+      0,
+      45
+    ],
+    "ORIGINAL_ABSORPTION": [
+      0,
+      183636
+    ],
+    "HOURS": [
+      0,
+      53
+    ],
+    "QTY": [
+      0,
+      89352
+    ],
+    "BATCHES": [
+      0,
+      509.94
+    ],
+    "PALLETS": [
+      0,
+      45
+    ],
+    "ABSORPTION": [
+      0,
+      183636
+    ]
+  },
+  "MSA-PACK-PL04-REBIDOSE": {
+    "DATE": [
+      "2025-04-01",
+      "2025-05-01"
+    ],
+    "ORIGINAL_HOURS": [
+      0,
+      3
+    ],
+    "ORIGINAL_QTY": [
+      0,
+      700
+    ],
+    "ORIGINAL_BATCHES": [
+      0,
+      38
+    ],
+    "ORIGINAL_PALLETS": [
+      0,
+      4
+    ],
+    "ORIGINAL_ABSORPTION": [
+      0,
+      20108
+    ],
+    "HOURS": [
+      0,
+      3
+    ],
+    "QTY": [
+      0,
+      700
+    ],
+    "BATCHES": [
+      0,
+      38
+    ],
+    "PALLETS": [
+      0,
+      4
+    ],
+    "ABSORPTION": [
+      0,
+      20108
+    ]
+  },
+  "MSA-PACK-MANUEL-AUB": {
+    "DATE": [
+      "2025-04-01",
+      "2025-05-01"
+    ],
+    "ORIGINAL_HOURS": [
+      0,
+      62
+    ],
+    "ORIGINAL_QTY": [
+      0,
+      18509
+    ],
+    "ORIGINAL_BATCHES": [
+      0,
+      45.78
+    ],
+    "ORIGINAL_PALLETS": [
+      0,
+      18
+    ],
+    "ORIGINAL_ABSORPTION": [
+      0,
+      157500
+    ],
+    "HOURS": [
+      0,
+      62
+    ],
+    "QTY": [
+      0,
+      18509
+    ],
+    "BATCHES": [
+      0,
+      45.78
+    ],
+    "PALLETS": [
+      0,
+      18
+    ],
+    "ABSORPTION": [
+      0,
+      157500
+    ]
+  },
+  "MSA-FDF-L8-FILL": {
+    "DATE": [
+      "2025-04-01",
+      "2025-05-01"
+    ],
+    "ORIGINAL_HOURS": [
+      0,
+      0
+    ],
+    "ORIGINAL_QTY": [
+      0,
+      0
+    ],
+    "ORIGINAL_BATCHES": [
+      0,
+      0
+    ],
+    "ORIGINAL_PALLETS": [
+      0,
+      0
+    ],
+    "ORIGINAL_ABSORPTION": [
+      0,
+      0
+    ],
+    "HOURS": [
+      0,
+      0
+    ],
+    "QTY": [
+      0,
+      0
+    ],
+    "BATCHES": [
+      0,
+      0
+    ],
+    "PALLETS": [
+      0,
+      0
+    ],
+    "ABSORPTION": [
+      0,
+      0
+    ]
+  },
+  "MSA-FDF-L5-FILL": {
+    "DATE": [
+      "2025-04-01",
+      "2025-05-01"
+    ],
+    "ORIGINAL_HOURS": [
+      0,
+      0
+    ],
+    "ORIGINAL_QTY": [
+      0,
+      0
+    ],
+    "ORIGINAL_BATCHES": [
+      0,
+      0
+    ],
+    "ORIGINAL_PALLETS": [
+      0,
+      0
+    ],
+    "ORIGINAL_ABSORPTION": [
+      0,
+      0
+    ],
+    "HOURS": [
+      0,
+      0
+    ],
+    "QTY": [
+      0,
+      0
+    ],
+    "BATCHES": [
+      0,
+      0
+    ],
+    "PALLETS": [
+      0,
+      0
+    ],
+    "ABSORPTION": [
+      0,
+      0
+    ]
+  },
+  "MSA-FDF-L6-FILL": {
+    "DATE": [
+      "2025-04-01",
+      "2025-05-01"
+    ],
+    "ORIGINAL_HOURS": [
+      0,
+      22
+    ],
+    "ORIGINAL_QTY": [
+      0,
+      5
+    ],
+    "ORIGINAL_BATCHES": [
+      0,
+      0
+    ],
+    "ORIGINAL_PALLETS": [
+      0,
+      0
+    ],
+    "ORIGINAL_ABSORPTION": [
+      0,
+      0
+    ],
+    "HOURS": [
+      0,
+      22
+    ],
+    "QTY": [
+      0,
+      5
+    ],
+    "BATCHES": [
+      0,
+      0
+    ],
+    "PALLETS": [
+      0,
+      0
+    ],
+    "ABSORPTION": [
+      0,
+      0
+    ]
+  },
+  "MSA-PACK-PL01-AUB": {
+    "DATE": [
+      "2025-04-01",
+      "2025-05-01"
+    ],
+    "ORIGINAL_HOURS": [
+      0,
+      69
+    ],
+    "ORIGINAL_QTY": [
+      0,
+      386059
+    ],
+    "ORIGINAL_BATCHES": [
+      0,
+      291.15
+    ],
+    "ORIGINAL_PALLETS": [
+      0,
+      119
+    ],
+    "ORIGINAL_ABSORPTION": [
+      0,
+      656049
+    ],
+    "HOURS": [
+      0,
+      69
+    ],
+    "QTY": [
+      0,
+      386059
+    ],
+    "BATCHES": [
+      0,
+      291.15
+    ],
+    "PALLETS": [
+      0,
+      119
+    ],
+    "ABSORPTION": [
+      0,
+      656049
+    ]
+  },
+  "MSA-PACK-PL06-AUB": {
+    "DATE": [
+      "2025-04-01",
+      "2025-05-01"
+    ],
+    "ORIGINAL_HOURS": [
+      0,
+      13
+    ],
+    "ORIGINAL_QTY": [
+      0,
+      12822
+    ],
+    "ORIGINAL_BATCHES": [
+      0,
+      99.75
+    ],
+    "ORIGINAL_PALLETS": [
+      0,
+      23
+    ],
+    "ORIGINAL_ABSORPTION": [
+      0,
+      118268
+    ],
+    "HOURS": [
+      12,
+      27
+    ],
+    "QTY": [
+      16344,
+      22212
+    ],
+    "BATCHES": [
+      444.76,
+      491
+    ],
+    "PALLETS": [
+      0,
+      23
+    ],
+    "ABSORPTION": [
+      0,
+      118268
+    ]
+  }
+}

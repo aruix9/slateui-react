@@ -1,0 +1,23 @@
+.optmazationTabTable  ld-table-head {
+    white-space: normal;
+}
+.optmazationTabTable  ld-table-cell {
+   font-weight: 500;
+}
+.optmazationResult {
+    margin-top: 1rem; /* mt-4 */
+    max-height: 30rem; /* max-h-[32rem] */
+    max-width: 80rem; /* max-w-[32rem] */
+    width: 100%; /* w-full */
+    overflow-y: auto; /* overflow-y-scroll */
+    overflow-x: auto; /* overflow-x-scroll */
+    position: relative; /* Required for sticky positioning */
+}
+
+.optmazationTabTable table {
+    display: table;
+    position: relative; /* Changed from 'abslute' to 'relative' */
+    width: 100%;
+}
+
+

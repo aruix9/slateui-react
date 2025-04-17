@@ -1,0 +1,264 @@
+{
+    "capacityData": [
+        {
+            "DATE": 1696118400000,
+            "EXTRA_HOURS": 30,
+            "LOAD": 100,
+            "ACTUAL_CAPACITY": 280,
+            "OPTIMAL_CAPACITY": 140,
+            "MIN_CAPACITY": 80,
+            "MAX_CAPACITY": 160
+        },
+        {
+            "DATE": 1698796800000,
+            "EXTRA_HOURS": 70,
+            "LOAD": 120,
+            "ACTUAL_CAPACITY": 260,
+            "OPTIMAL_CAPACITY": 150,
+            "MIN_CAPACITY": 90,
+            "MAX_CAPACITY": 170
+        },
+        {
+            "DATE": 1701398400000,
+            "EXTRA_HOURS": 40,
+            "LOAD": 110,
+            "ACTUAL_CAPACITY": 125,
+            "OPTIMAL_CAPACITY": 145,
+            "MIN_CAPACITY": 85,
+            "MAX_CAPACITY": 220
+        },
+        {
+            "DATE": 1704067200000,
+            "EXTRA_HOURS": 80,
+            "LOAD": 130,
+            "ACTUAL_CAPACITY": 135,
+            "OPTIMAL_CAPACITY": 155,
+            "MIN_CAPACITY": 95,
+            "MAX_CAPACITY": 240
+        },
+        {
+            "DATE": 1706745600000,
+            "EXTRA_HOURS": 50,
+            "LOAD": 140,
+            "ACTUAL_CAPACITY": 250,
+            "OPTIMAL_CAPACITY": 160,
+            "MIN_CAPACITY": 100,
+            "MAX_CAPACITY": 245
+        },
+        {
+            "DATE": 1709328000000,
+            "EXTRA_HOURS": 90,
+            "LOAD": 150,
+            "ACTUAL_CAPACITY": 150,
+            "OPTIMAL_CAPACITY": 170,
+            "MIN_CAPACITY": 110,
+            "MAX_CAPACITY": 250
+        },
+        {
+            "DATE": 1712006400000,
+            "EXTRA_HOURS": 20,
+            "LOAD": 95,
+            "ACTUAL_CAPACITY": 115,
+            "OPTIMAL_CAPACITY": 135,
+            "MIN_CAPACITY": 75,
+            "MAX_CAPACITY": 255
+        },
+        {
+            "DATE": 1714684800000,
+            "EXTRA_HOURS": 60,
+            "LOAD": 125,
+            "ACTUAL_CAPACITY": 128,
+            "OPTIMAL_CAPACITY": 148,
+            "MIN_CAPACITY": 88,
+            "MAX_CAPACITY": 260
+        },
+        {
+            "DATE": 1717363200000,
+            "EXTRA_HOURS": 35,
+            "LOAD": 105,
+            "ACTUAL_CAPACITY": 200,
+            "OPTIMAL_CAPACITY": 142,
+            "MIN_CAPACITY": 82,
+            "MAX_CAPACITY": 280
+        },
+        {
+            "DATE": 1719964800000,
+            "EXTRA_HOURS": 75,
+            "LOAD": 135,
+            "ACTUAL_CAPACITY": 138,
+            "OPTIMAL_CAPACITY": 158,
+            "MIN_CAPACITY": 98,
+            "MAX_CAPACITY": 286
+        },
+        {
+            "DATE": 1722643200000,
+            "EXTRA_HOURS": 45,
+            "LOAD": 115,
+            "ACTUAL_CAPACITY": 126,
+            "OPTIMAL_CAPACITY": 146,
+            "MIN_CAPACITY": 86,
+            "MAX_CAPACITY": 290
+        },
+        {
+            "DATE": 1725321600000,
+            "EXTRA_HOURS": 85,
+            "LOAD": 145,
+            "ACTUAL_CAPACITY": 280,
+            "OPTIMAL_CAPACITY": 164,
+            "MIN_CAPACITY": 104,
+            "MAX_CAPACITY": 300
+        },
+        {
+            "DATE": 1728000000000,
+            "EXTRA_HOURS": 25,
+            "LOAD": 90,
+            "ACTUAL_CAPACITY": 300,
+            "OPTIMAL_CAPACITY": 138,
+            "MIN_CAPACITY": 78,
+            "MAX_CAPACITY": 330
+        },
+        {
+            "DATE": 1729670400000,
+            "EXTRA_HOURS": 65,
+            "LOAD": 120,
+            "ACTUAL_CAPACITY": 320,
+            "OPTIMAL_CAPACITY": 150,
+            "MIN_CAPACITY": 90,
+            "MAX_CAPACITY": 340
+        },
+        {
+            "DATE": 1732348800000,
+            "EXTRA_HOURS": 55,
+            "LOAD": 110,
+            "ACTUAL_CAPACITY": 125,
+            "OPTIMAL_CAPACITY": 145,
+            "MIN_CAPACITY": 85,
+            "MAX_CAPACITY": 165
+        },
+        {
+            "DATE": 1735027200000,
+            "EXTRA_HOURS": 95,
+            "LOAD": 130,
+            "ACTUAL_CAPACITY": 240,
+            "OPTIMAL_CAPACITY": 155,
+            "MIN_CAPACITY": 95,
+            "MAX_CAPACITY": 290
+        },
+        {
+            "DATE": 1737705600000,
+            "EXTRA_HOURS": 15,
+            "LOAD": 100,
+            "ACTUAL_CAPACITY": 120,
+            "OPTIMAL_CAPACITY": 140,
+            "MIN_CAPACITY": 80,
+            "MAX_CAPACITY": 160
+        },
+        {
+            "DATE": 1740288000000,
+            "EXTRA_HOURS": 65,
+            "LOAD": 130,
+            "ACTUAL_CAPACITY": 135,
+            "OPTIMAL_CAPACITY": 155,
+            "MIN_CAPACITY": 95,
+            "MAX_CAPACITY": 175
+        },
+        {
+            "DATE": 1742966400000,
+            "EXTRA_HOURS": 35,
+            "LOAD": 110,
+            "ACTUAL_CAPACITY": 125,
+            "OPTIMAL_CAPACITY": 145,
+            "MIN_CAPACITY": 100,
+            "MAX_CAPACITY": 165
+        },
+        {
+            "DATE": 1745644800000,
+            "EXTRA_HOURS": 75,
+            "LOAD": 140,
+            "ACTUAL_CAPACITY": 480,
+            "OPTIMAL_CAPACITY": 160,
+            "MIN_CAPACITY": 180,
+            "MAX_CAPACITY": 550
+        },
+        {
+            "DATE": 1748323200000,
+            "EXTRA_HOURS": 45,
+            "LOAD": 50,
+            "ACTUAL_CAPACITY": 550,
+            "MIN_CAPACITY": 200,
+            "MAX_CAPACITY": 630
+        },
+        {
+            "DATE": 1790812800000,
+            "EXTRA_HOURS": 20,
+            "LOAD": 101,
+            "ACTUAL_CAPACITY": 465,
+            "OPTIMAL_CAPACITY": 109,
+            "MIN_CAPACITY": 56,
+            "MAX_CAPACITY": 354
+        },
+        {
+            "DATE": 1785542400000,
+            "EXTRA_HOURS": 17,
+            "LOAD": 72,
+            "ACTUAL_CAPACITY": 150,
+            "OPTIMAL_CAPACITY": 181,
+            "MIN_CAPACITY": 66,
+            "MAX_CAPACITY": 445
+        },
+        {
+            "DATE": 1796083200000,
+            "EXTRA_HOURS": 78,
+            "LOAD": 137,
+            "ACTUAL_CAPACITY": 198,
+            "OPTIMAL_CAPACITY": 138,
+            "MIN_CAPACITY": 64,
+            "MAX_CAPACITY": 378
+        },
+        {
+            "DATE": 1769904000000,
+            "EXTRA_HOURS": 84,
+            "LOAD": 92,
+            "ACTUAL_CAPACITY": 302,
+            "OPTIMAL_CAPACITY": 116,
+            "MIN_CAPACITY": 57,
+            "MAX_CAPACITY": 423
+        },
+        {
+            "DATE": 1817078400000,
+            "EXTRA_HOURS": 17,
+            "LOAD": 66,
+            "ACTUAL_CAPACITY": 301,
+            "OPTIMAL_CAPACITY": 173,
+            "MIN_CAPACITY": 99,
+            "MAX_CAPACITY": 638
+        },
+        {
+            "DATE": 1806537600000,
+            "EXTRA_HOURS": 53,
+            "LOAD": 80,
+            "ACTUAL_CAPACITY": 465,
+            "OPTIMAL_CAPACITY": 153,
+            "MIN_CAPACITY": 81,
+            "MAX_CAPACITY": 341
+        },
+        {
+            "DATE": 1809129600000,
+            "EXTRA_HOURS": 63,
+            "LOAD": 58,
+            "ACTUAL_CAPACITY": 587,
+            "OPTIMAL_CAPACITY": 115,
+            "MIN_CAPACITY": 56,
+            "MAX_CAPACITY": 262
+        },
+        {
+            "DATE": 1827619200000,
+            "EXTRA_HOURS": 93,
+            "LOAD": 82,
+            "ACTUAL_CAPACITY": 261,
+            "OPTIMAL_CAPACITY": 175,
+            "MIN_CAPACITY": 55,
+            "MAX_CAPACITY": 495
+        }
+    ]
+}

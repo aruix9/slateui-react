@@ -1,0 +1,11 @@
+.simulationMasterTableContainer .word-break {
+    overflow-wrap: break-word;
+    white-space: normal;
+    color: #182026;
+    overflow: hidden;
+    word-break: break-all;
+}
+
+.simulationMasterTableContainer .w-\[150px\] td {
+    width: 150px;
+}

@@ -1,0 +1,62 @@
+.capcity_alert_organge{
+ background-color:  #FBB360;
+ font-size: small;
+ font-weight: 400;
+}
+
+.bg_grey{
+    background-color: var(--ld-col-neutral-200);
+}
+.greenBtn{
+    background: var(--ld-sp-16);
+}
+.sim-line-container{
+   border: 2px solid #ececf4;
+   background-color: var(--ld-col-neutral-010);
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    width: 7px; /* Width of the scrollbar */
+}
+
+.hide-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2); /* Slightly transparent color for the scrollbar thumb */
+    border-radius: 10px; /* Rounded corners for the scrollbar thumb */
+}
+
+.hide-scrollbar::-webkit-scrollbar-track {
+    background: transparent; /* Background of the scrollbar track */
+}
+
+.hide-scrollbar::-webkit-scrollbar-button {
+    display: none; /* Hide the up and down arrows */
+}
+
+.hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: 7px;  /* Firefox */
+}
+.ld-modal-run-opt {
+    --ld-modal-max-inline-size: 100%; /* Set the maximum width to 100% */
+    --ld-modal-max-block-size: 100%;   /* Allow height to adjust automatically */
+}
+
+.ld-modal-run-opt .ld-typo {
+    font-size: small;
+}
+
+.ld-modal-run-opt ld-table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-size: 10px
+}
+
+.ld-modal-run-opt ld-table-header {
+    text-align: center;
+    border-bottom: none;
+    padding: 8px 12px;
+}
+
+
+
+
