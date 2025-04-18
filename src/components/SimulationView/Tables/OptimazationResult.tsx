@@ -379,92 +379,84 @@ const SimulationResult: React.FC<SimulationResultProp> = ({
   }, [distributionGraphData, Lines])
 
   return (
-    <div className='w-full'>
+    <div className='mt-4 w-full'>
       {loading ? (
-        <div className='text-center mt-4'>
+        <div className='text-center'>
           <LdLoading /> <LdTypo>Loading Optimization Result</LdTypo>
         </div>
       ) : (
-        <div className='mt-4 w-full'>
-          <LdTabs style={{ width: '100%' }}>
-            {SimulationStatus === 'SUCCESS' &&
-            filterDistributionGraphTable &&
+        <>
+          {SimulationStatus === 'SUCCESS' &&
+          filterDistributionGraphTable &&
+          Object.keys(filterDistributionGraphTable).length > 0 ? (
+            <div className='p-2 mt-2'>
+              <span>
+                The following table displays the optimal shifts distribution for
+                this line outputed by the algorithm.
+              </span>
+            </div>
+          ) : (
+            <div
+              className='rounded-[5px] mt-2 p-1 mb-4 flex items-center h-8'
+              style={{ backgroundColor: '#FBB360' }}
+            >
+              <LdIcon name='cross' className='mr-2' />
+              <span>
+                No Capacity Optimization ran for this line yet, so no results
+                available to display
+              </span>
+            </div>
+          )}
+          <div className='flex justify-stretch w-full button-tab-group'>
+            <button
+              type='button'
+              className={`${activeTab === 'table' && 'active'} bg-light`}
+              onClick={() => setActiveTab('table')}
+            >
+              Table
+            </button>
+            <button
+              type='button'
+              className={`${activeTab === 'graph' && 'active'} bg-light`}
+              onClick={() => setActiveTab('graph')}
+            >
+              Graph
+            </button>
+          </div>
+          <div
+            className={`overflow-hidden ${
+              activeTab !== 'table' ? 'hidden' : ''
+            }`}
+          >
+            {filterDistributionGraphTable &&
             Object.keys(filterDistributionGraphTable).length > 0 ? (
-              <div className='p-2 mt-2'>
-                <span>
-                  The following table displays the optimal shifts distribution
-                  for this line outputed by the algorithm.
-                </span>
+              <div className='overflow-x-auto'>
+                <OptimizationTable
+                  filterDistributionGraphTable={filterDistributionGraphTable}
+                />
               </div>
             ) : (
-              <div
-                className='rounded-[5px] mt-2 p-1 mb-4 flex items-center h-8'
-                style={{ backgroundColor: '#FBB360' }}
-              >
-                <LdIcon name='cross' className='mr-2' />
-                <span>
-                  No Capacity Optimization ran for this line yet, so no results
-                  available to display
-                </span>
-              </div>
+              <p>No data available</p>
             )}
-            <LdTablist mode='ghost'>
-              <LdTab
-                onClick={() => setActiveTab('table')}
-                style={{
-                  fontWeight: activeTab === 'table' ? 'bold' : 'normal',
-                }}
-              >
-                Table
-              </LdTab>
-              <LdTab
-                onClick={() => setActiveTab('graph')}
-                style={{
-                  fontWeight: activeTab === 'graph' ? 'bold' : 'normal',
-                }}
-              >
-                Graph
-              </LdTab>
-            </LdTablist>
-            <LdTabpanellist>
-              <LdTabpanel
-                style={{ display: activeTab === 'table' ? 'block' : 'none' }}
-              >
-                <div className='optmazationResult'>
-                  {filterDistributionGraphTable &&
-                  Object.keys(filterDistributionGraphTable).length > 0 ? (
-                    <OptimizationTable
-                      filterDistributionGraphTable={
-                        filterDistributionGraphTable
-                      }
-                    />
-                  ) : (
-                    <p>No data available</p>
-                  )}
-                </div>
-              </LdTabpanel>
-              <LdTabpanel
-                style={{ display: activeTab === 'graph' ? 'block' : 'none' }}
-              >
-                <div className='w-full'>
-                  {filterShiftgraph &&
-                    Array.isArray(filterShiftgraph) &&
-                    filterShiftgraph.length > 0 && (
-                      <OptimazationChart data={filterShiftgraph} />
-                    )}
-                </div>
-                <div className='w-full'>
-                  {filterDistributionTable &&
-                    Object.keys(filterDistributionTable).length > 0 && (
-                      <SimulationResultSummary
-                        distributionGraphData={filterDistributionTable}
-                      />
-                    )}
-                </div>
-              </LdTabpanel>
-            </LdTabpanellist>
-          </LdTabs>
-        </div>
+          </div>
+          <div
+            className={`overflow-hidden ${
+              activeTab !== 'graph' ? 'hidden' : ''
+            }`}
+          >
+            {filterShiftgraph &&
+              Array.isArray(filterShiftgraph) &&
+              filterShiftgraph.length > 0 && (
+                <OptimazationChart data={filterShiftgraph} />
+              )}
+            {filterDistributionTable &&
+              Object.keys(filterDistributionTable).length > 0 && (
+                <SimulationResultSummary
+                  distributionGraphData={filterDistributionTable}
+                />
+              )}
+          </div>
+        </>
       )}
     </div>
   )

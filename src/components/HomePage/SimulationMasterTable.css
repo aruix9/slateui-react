@@ -1,11 +1,15 @@
 .simulationMasterTableContainer .word-break {
-    overflow-wrap: break-word;
-    white-space: normal;
-    color: #182026;
-    overflow: hidden;
-    word-break: break-all;
+  overflow-wrap: break-word;
+  white-space: normal;
+  color: #182026;
+  overflow: hidden;
+  word-break: break-all;
 }
 
-.simulationMasterTableContainer .w-\[150px\] td {
-    width: 150px;
+.simulationMasterTableContainer ld-table-row:hover {
+  background-color: rgb(232, 240, 245);
+}
+
+.ld-table__selection-wrapper {
+  background-color: transparent !important;
 }

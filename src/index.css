@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -17,9 +16,10 @@ code {
     monospace;
 }
 
-
 .appContainer {
   --ld-thm-primary: #085897;
+  --ld-button-neutral-bg-color: green;
+  --ld-table-selection-wrapper-gradient: none;
 }
 .ld-header,
 :host(.ld-header) {
@@ -39,4 +39,51 @@ code {
 .ld-table {
   --ld-sp-6: 0;
   --ld-table-cell-padding-y: 8px;
+}
+
+/* success button */
+.ld-button--success {
+  color: #fff;
+  border-radius: 0.25rem;
+  background-color: #04642e;
+}
+
+.ld-button--success:hover,
+.ld-button--success:focus {
+  background-color: #054c20;
+}
+
+.button-tab-group button {
+  flex-grow: 1;
+  font-weight: 600;
+  padding: 0.2rem;
+  border-bottom: 3px solid var(--ld-col-neutral-100);
+}
+.button-tab-group button.bg-primary {
+  background-color: #d8eaf8;
+}
+.button-tab-group button.bg-light {
+  background-color: #f8f8fc;
+}
+.button-tab-group.btn-sm button {
+  font: var(--ld-typo-body-s);
+  font-weight: 700;
+  color: var(--ld-thm-primary);
+}
+.button-tab-group button.active {
+  color: var(--ld-thm-primary);
+  border-color: var(--ld-thm-primary);
+}
+.button-tab-group button.active {
+  border-color: var(--ld-thm-primary);
+}
+
+/* tabs */
+.custom-tabs ld-tablist {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.custom-tabs ld-tab {
+  justify-self: stretch;
 }

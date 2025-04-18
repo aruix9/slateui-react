@@ -422,350 +422,346 @@ const SimulationView = () => {
       : [{ value: '', label: '' }]
 
   return (
-    <div className='container mx-auto'>
+    <div className='slate-ui-container px-4 !my-5'>
       {/*-------------------------  simulation details page start ------------------------- */}
-      <div className='p-8 ax-w-screen-md mx-auto'>
-        <LdCard className='w-full'>
-          <div className='flex w-full'>
-            <h1 className='text-[1.2rem] font-semibold flex-1'>
-              Simulation View for {simulationData.simulation_name}
-            </h1>
-            <div className='flex-none'>
-              {isrunOptLoading && <LdLoading />}
-              <LdButton
-                size='sm'
-                onClick={runCapaCityOptimazation}
-                disabled={isrunOptLoading}
-              >
-                {' '}
-                <LdIcon name='energy' size='sm' /> Run Capacity Optimization
-              </LdButton>
+      <LdCard className='w-full'>
+        <div className='flex w-full'>
+          <h1 className='text-[1.2rem] font-semibold flex-1'>
+            Simulation View for {simulationData.simulation_name}
+          </h1>
+          <div className='flex-none'>
+            {isrunOptLoading && <LdLoading />}
+            <LdButton
+              size='sm'
+              onClick={runCapaCityOptimazation}
+              disabled={isrunOptLoading}
+            >
+              {' '}
+              <LdIcon name='energy' size='sm' /> Run Capacity Optimization
+            </LdButton>
+          </div>
+        </div>
+        <div className='w-full'>
+          {simulationStatus && <StatusAlert currentStatus={simulationStatus} />}
+        </div>
+        <div className='grid grid-cols-4 gap-4 mb-4 w-full'>
+          <div>
+            <LdLabel>CYCLE_KEY</LdLabel>
+            <div className='bg_grey p-2 mt-2 h-8 flex items-center rounded-[2px]'>
+              {simulationData.cycle_key}
             </div>
           </div>
-          <div className='w-full'>
-            {simulationStatus && (
-              <StatusAlert currentStatus={simulationStatus} />
+          <div>
+            <LdLabel>DATE RANGE</LdLabel>
+            <div className='bg_grey p-2 mt-2 h-8 flex items-center rounded-[2px]'>
+              {simulationData.init_date} → {simulationData.end_date}
+            </div>
+          </div>
+        </div>
+        <div className='flex w-full mt-2'>
+          <LdLabel className='flex-1'>SIMULATION DESCRIPTION</LdLabel>
+          <div className='flex-none'>
+            <LdButton
+              size='sm'
+              className={isEditing ? 'ld-theme-tea' : 'h-4'}
+              onClick={handleEditClick}
+            >
+              <LdIcon name={isEditing ? 'checkmark' : 'pen'} />
+              {isEditing ? 'Save' : 'Edit'}
+            </LdButton>
+          </div>
+        </div>
+        <div className='flex w-full mt-2'>
+          <LdInput
+            value={simulationData.simulation_description} // Use the value from simulationData
+            onLdchange={(e) => descriptionChange(e)}
+            disabled={!isEditing} // Disable input when not editing
+            className='w-full'
+            resize='vertical'
+            placeholder='Tell us your story...'
+            multiline
+            rows={4}
+            cols={100}
+          />
+        </div>
+        <div className='flex w-full mt-4'>
+          <LdLabel className='flex-1'>SELECTED LINES</LdLabel>
+          <div className='flex-none'>
+            <LdButton
+              size='sm'
+              onClick={() => selectedLineModal()}
+              className='ld-theme-tea w-40'
+            >
+              {' '}
+              <LdIcon name='settings' size='sm' /> Select Lines
+            </LdButton>
+          </div>
+        </div>
+        <div className='flex w-full mt-4'>
+          <div className='w-full h-[100px] p-2 sim-line-container overflow-y-scroll hide-scrollbar'>
+            {selectedLines.length === 0 ? (
+              <LdTypo>No lines selected.</LdTypo>
+            ) : (
+              selectedLines.map((line) => (
+                <LdBadge key={line} className='mr-2'>
+                  {line}
+                </LdBadge>
+              ))
             )}
           </div>
-          <div className='grid grid-cols-4 gap-4 mb-4 w-full'>
-            <div>
-              <LdLabel>CYCLE_KEY</LdLabel>
-              <div className='bg_grey p-2 mt-2 h-8 flex items-center rounded-[2px]'>
-                {simulationData.cycle_key}
-              </div>
+        </div>
+      </LdCard>
+      {/* ----------------Simulation Modal loading here--------------------------- */}
+      {/* ------------------------ Select line modal-------------------- */}
+      <LdModal blurryBackdrop cancelable={true} ref={modalRef}>
+        <LdTypo slot='header'>Select lines</LdTypo>
+        <div className='max-h-[300px] overflow-y-scroll hide-scrollbar'>
+          {simLines.map((line) => (
+            <div key={line} className='flex items-center mb-2'>
+              <LdCheckbox
+                checked={tempSelectedLines.includes(line)}
+                onLdchange={() => toggleLineSelection(line)}
+              />
+              <LdTypo className='ml-2'>{line}</LdTypo>
             </div>
-            <div>
-              <LdLabel>DATE RANGE</LdLabel>
-              <div className='bg_grey p-2 mt-2 h-8 flex items-center rounded-[2px]'>
-                {simulationData.init_date} → {simulationData.end_date}
-              </div>
-            </div>
-          </div>
-          <div className='flex w-full mt-2'>
-            <LdLabel className='flex-1'>SIMULATION DESCRIPTION</LdLabel>
-            <div className='flex-none'>
-              <LdButton
-                size='sm'
-                className={isEditing ? 'ld-theme-tea' : 'h-4'}
-                onClick={handleEditClick}
-              >
-                <LdIcon name={isEditing ? 'checkmark' : 'pen'} />
-                {isEditing ? 'Save' : 'Edit'}
-              </LdButton>
-            </div>
-          </div>
-          <div className='flex w-full mt-2'>
-            <LdInput
-              value={simulationData.simulation_description} // Use the value from simulationData
-              onLdchange={(e) => descriptionChange(e)}
-              disabled={!isEditing} // Disable input when not editing
-              className='w-full'
-              resize='vertical'
-              placeholder='Tell us your story...'
-              multiline
-              rows={4}
-              cols={100}
-            />
-          </div>
-          <div className='flex w-full mt-4'>
-            <LdLabel className='flex-1'>SELECTED LINES</LdLabel>
-            <div className='flex-none'>
-              <LdButton
-                size='sm'
-                onClick={() => selectedLineModal()}
-                className='ld-theme-tea w-40'
-              >
-                {' '}
-                <LdIcon name='settings' size='sm' /> Select Lines
-              </LdButton>
-            </div>
-          </div>
-          <div className='flex w-full mt-4'>
-            <div className='w-full h-[100px] p-2 sim-line-container overflow-y-scroll hide-scrollbar'>
-              {selectedLines.length === 0 ? (
-                <LdTypo>No lines selected.</LdTypo>
-              ) : (
-                selectedLines.map((line) => (
-                  <LdBadge key={line} className='mr-2'>
-                    {line}
-                  </LdBadge>
-                ))
-              )}
-            </div>
-          </div>
-        </LdCard>
-        {/* ----------------Simulation Modal loading here--------------------------- */}
-        {/* ------------------------ Select line modal-------------------- */}
-        <LdModal blurryBackdrop cancelable={true} ref={modalRef}>
-          <LdTypo slot='header'>Select lines</LdTypo>
-          <div className='max-h-[300px] overflow-y-scroll hide-scrollbar'>
+          ))}
+        </div>
+        <LdButton
+          slot='footer'
+          size='sm'
+          className='ld-theme-tea w-80'
+          onClick={() => submitSelectedLine()}
+        >
+          <LdIcon size='sm' name='checkmark' /> Confirm selected lines
+        </LdButton>
+      </LdModal>
+      {/* ------------------------ end Select line modal-------------------- */}
+
+      {/* ------------------------ Optimazation run line modal-------------------- */}
+      <LdModal
+        className='ld-modal-run-opt'
+        blurryBackdrop
+        cancelable={true}
+        ref={runOptimazationRef}
+      >
+        <LdTypo variant='label-m' slot='header'>
+          Optimization Configuration
+        </LdTypo>
+        <LdTypo variant='label-s'>
+          LINES TO OPTIMIZE <small>(Select at least one)</small>
+        </LdTypo>
+        <LdTypo variant='body-xs'>
+          Lines you select here are the ones that the algorithm will run for. By
+          default, all lines with modifications in demand or capacity are
+          selected
+        </LdTypo>
+        <div className='grid grid-cols-[20%_80%] gap-2 mb-2 w-full mt-2'>
+          <div className='max-h-[14rem] overflow-y-scroll hide-scrollbar'>
             {simLines.map((line) => (
               <div key={line} className='flex items-center mb-2'>
                 <LdCheckbox
-                  checked={tempSelectedLines.includes(line)}
+                  checked={selectedLines.includes(line)}
                   onLdchange={() => toggleLineSelection(line)}
                 />
-                <LdTypo className='ml-2'>{line}</LdTypo>
+                <LdTypo variant='body-s' className='ml-2'>
+                  {line}
+                </LdTypo>
               </div>
             ))}
           </div>
-          <LdButton
-            slot='footer'
-            size='sm'
-            className='ld-theme-tea w-80'
-            onClick={() => submitSelectedLine()}
-          >
-            <LdIcon size='sm' name='checkmark' /> Confirm selected lines
-          </LdButton>
-        </LdModal>
-        {/* ------------------------ end Select line modal-------------------- */}
-
-        {/* ------------------------ Optimazation run line modal-------------------- */}
-        <LdModal
-          className='ld-modal-run-opt'
-          blurryBackdrop
-          cancelable={true}
-          ref={runOptimazationRef}
-        >
-          <LdTypo variant='label-m' slot='header'>
-            Optimization Configuration
-          </LdTypo>
-          <LdTypo variant='label-s'>
-            LINES TO OPTIMIZE <small>(Select at least one)</small>
-          </LdTypo>
-          <LdTypo variant='body-xs'>
-            Lines you select here are the ones that the algorithm will run for.
-            By default, all lines with modifications in demand or capacity are
-            selected
-          </LdTypo>
-          <div className='grid grid-cols-[20%_80%] gap-2 mb-2 w-full mt-2'>
-            <div className='max-h-[14rem] overflow-y-scroll hide-scrollbar'>
-              {simLines.map((line) => (
-                <div key={line} className='flex items-center mb-2'>
-                  <LdCheckbox
-                    checked={selectedLines.includes(line)}
-                    onLdchange={() => toggleLineSelection(line)}
-                  />
-                  <LdTypo variant='body-s' className='ml-2'>
-                    {line}
-                  </LdTypo>
-                </div>
-              ))}
+          <div>
+            <div className='grid grid-cols-3 gap-8'>
+              <LdTypo variant='body-xs' className='flex'>
+                <b>OPTIMIZATION INPUT SUMMARY FOR LINE</b>
+              </LdTypo>
+              <LdSelect
+                onLdchange={(e) => filterTablesLines(e.detail[0])}
+                size='sm'
+                className='flex-none'
+                tetherOptions={tetherOptions}
+                selected={selectedOption}
+              >
+                {selectedLines.length === 0 ? (
+                  <LdOption disabled>No matches found</LdOption>
+                ) : (
+                  selectedLines.map((line) => (
+                    <LdOption key={line} value={line}>
+                      {line}
+                    </LdOption>
+                  ))
+                )}
+              </LdSelect>
+            </div>
+            {/* Table start here */}
+            <div className='mt-2'>
+              <LdTable className='max-h-[12rem]'>
+                <LdTableHead>
+                  <LdTableRow>
+                    <LdTableHeader>DATE</LdTableHeader>
+                    <LdTableHeader>MIN SHIFTS</LdTableHeader>
+                    <LdTableHeader>MAX SHIFTS</LdTableHeader>
+                    <LdTableHeader>OEE (%)</LdTableHeader>
+                    <LdTableHeader>HOURS PER SHIFT</LdTableHeader>
+                    <LdTableHeader>TOTAL LOAD</LdTableHeader>
+                  </LdTableRow>
+                </LdTableHead>
+                <LdTableBody style={{ textAlign: 'center' }}>
+                  {Object.keys(CapacityData)
+                    .filter(
+                      (lineKey) =>
+                        selectedLines ? lineKey === filteredLine : true // Filter based on the selected line
+                    )
+                    .map((lineKey) => {
+                      const lineData = CapacityData[lineKey]
+                      return lineData.DATE.map(
+                        (date: string, index: number) => (
+                          <LdTableRow key={`${lineKey}-${index}`}>
+                            <LdTableCell>{date}</LdTableCell>
+                            <LdTableCell>
+                              {lineData.MIN_SHIFTS[index]}
+                            </LdTableCell>
+                            <LdTableCell>
+                              {lineData.MAX_SHIFTS[index]}
+                            </LdTableCell>
+                            <LdTableCell>
+                              {lineData.OEE[index].toFixed(2)}%
+                            </LdTableCell>
+                            <LdTableCell>
+                              {lineData.HOURS_PER_SHIFT[index]}
+                            </LdTableCell>
+                            <LdTableCell>
+                              {(
+                                lineData.PLANNED_CAPACITY_HOURS[index] *
+                                lineData.OEE[index]
+                              ).toFixed(2)}
+                            </LdTableCell>
+                          </LdTableRow>
+                        )
+                      )
+                    })}
+                  {Object.keys(CapacityData).filter((lineKey) =>
+                    filteredLine ? lineKey === filteredLine : true
+                  ).length === 0 && (
+                    <LdTableRow>
+                      <LdTableCell colspan={6}>
+                        No data available for the selected line
+                      </LdTableCell>
+                    </LdTableRow>
+                  )}
+                </LdTableBody>
+              </LdTable>
+            </div>
+            {/* Table end here  */}
+          </div>
+        </div>
+        <div className='flex w-full mt-1'>
+          <div className='w-[80%]'>
+            <LdTypo variant='body-xs'>
+              <b>OPTIMIZATION ALGORITHM PARAMETERS</b>{' '}
+              <small>
+                (modify only if you know well the algorithm formulation)
+              </small>{' '}
+            </LdTypo>
+          </div>
+          <div className='w-[20%] flex-none'>
+            {selectedLines.length > 0 && (
+              <LdButton
+                mode='ghost'
+                size='sm'
+                onClick={handleEditParameter}
+                className='h-1'
+              >
+                <LdIcon size='sm' name='pen' /> Edit Parameters
+              </LdButton>
+            )}
+          </div>
+        </div>
+        <div className='flex w-full mt-1'>
+          <div className='grid grid-cols-5 gap-1 w-full'>
+            <div>
+              <LdTypo variant='body-xs'>Weight Avoid Delay</LdTypo>
+              <LdInput
+                size='sm'
+                className='w-40'
+                disabled={!isEditableParameter}
+                type='number'
+                min={0}
+                value={parameterValue.weight_avoid_delay.toString()}
+                onChange={handleInputParameterChange('weight_avoid_delay')}
+              />
             </div>
             <div>
-              <div className='grid grid-cols-3 gap-8'>
-                <LdTypo variant='body-xs' className='flex'>
-                  <b>OPTIMIZATION INPUT SUMMARY FOR LINE</b>
-                </LdTypo>
-                <LdSelect
-                  onLdchange={(e) => filterTablesLines(e.detail[0])}
-                  size='sm'
-                  className='flex-none'
-                  tetherOptions={tetherOptions}
-                  selected={selectedOption}
-                >
-                  {selectedLines.length === 0 ? (
-                    <LdOption disabled>No matches found</LdOption>
-                  ) : (
-                    selectedLines.map((line) => (
-                      <LdOption key={line} value={line}>
-                        {line}
-                      </LdOption>
-                    ))
-                  )}
-                </LdSelect>
-              </div>
-              {/* Table start here */}
-              <div className='mt-2'>
-                <LdTable className='max-h-[12rem]'>
-                  <LdTableHead>
-                    <LdTableRow>
-                      <LdTableHeader>DATE</LdTableHeader>
-                      <LdTableHeader>MIN SHIFTS</LdTableHeader>
-                      <LdTableHeader>MAX SHIFTS</LdTableHeader>
-                      <LdTableHeader>OEE (%)</LdTableHeader>
-                      <LdTableHeader>HOURS PER SHIFT</LdTableHeader>
-                      <LdTableHeader>TOTAL LOAD</LdTableHeader>
-                    </LdTableRow>
-                  </LdTableHead>
-                  <LdTableBody style={{ textAlign: 'center' }}>
-                    {Object.keys(CapacityData)
-                      .filter(
-                        (lineKey) =>
-                          selectedLines ? lineKey === filteredLine : true // Filter based on the selected line
-                      )
-                      .map((lineKey) => {
-                        const lineData = CapacityData[lineKey]
-                        return lineData.DATE.map(
-                          (date: string, index: number) => (
-                            <LdTableRow key={`${lineKey}-${index}`}>
-                              <LdTableCell>{date}</LdTableCell>
-                              <LdTableCell>
-                                {lineData.MIN_SHIFTS[index]}
-                              </LdTableCell>
-                              <LdTableCell>
-                                {lineData.MAX_SHIFTS[index]}
-                              </LdTableCell>
-                              <LdTableCell>
-                                {lineData.OEE[index].toFixed(2)}%
-                              </LdTableCell>
-                              <LdTableCell>
-                                {lineData.HOURS_PER_SHIFT[index]}
-                              </LdTableCell>
-                              <LdTableCell>
-                                {(
-                                  lineData.PLANNED_CAPACITY_HOURS[index] *
-                                  lineData.OEE[index]
-                                ).toFixed(2)}
-                              </LdTableCell>
-                            </LdTableRow>
-                          )
-                        )
-                      })}
-                    {Object.keys(CapacityData).filter((lineKey) =>
-                      filteredLine ? lineKey === filteredLine : true
-                    ).length === 0 && (
-                      <LdTableRow>
-                        <LdTableCell colspan={6}>
-                          No data available for the selected line
-                        </LdTableCell>
-                      </LdTableRow>
-                    )}
-                  </LdTableBody>
-                </LdTable>
-              </div>
-              {/* Table end here  */}
+              <LdTypo variant='body-xs'>Weight Avoid Anticipation</LdTypo>
+              <LdInput
+                size='sm'
+                className='w-40'
+                disabled={!isEditableParameter}
+                type='number'
+                min={0}
+                value={parameterValue.weight_avoid_anticipation.toString()}
+                onChange={handleInputParameterChange(
+                  'weight_avoid_anticipation'
+                )}
+              />
+            </div>
+            <div>
+              <LdTypo variant='body-xs'>Weight Avoid Variability</LdTypo>
+              <LdInput
+                size='sm'
+                className='w-40'
+                disabled={!isEditableParameter}
+                type='number'
+                min={0}
+                value={parameterValue.weight_avoid_variability.toString()}
+                onChange={handleInputParameterChange(
+                  'weight_avoid_variability'
+                )}
+              />
+            </div>
+            <div>
+              <LdTypo variant='body-xs'>Weight Match Target D/C Ratio</LdTypo>
+              <LdInput
+                size='sm'
+                className='w-40'
+                disabled={!isEditableParameter}
+                type='number'
+                min={0}
+                value={parameterValue.weight_match_target_ratio.toString()}
+                onChange={handleInputParameterChange(
+                  'weight_match_target_ratio'
+                )}
+              />
+            </div>
+            <div>
+              <LdTypo variant='body-xs'>Target D/C Ratio (%)</LdTypo>
+              <LdInput
+                size='sm'
+                className='w-40'
+                disabled={!isEditableParameter}
+                type='number'
+                min={0}
+                value={parameterValue.target_dc_ratio.toString()}
+                onChange={handleInputParameterChange('target_dc_ratio')}
+              />
             </div>
           </div>
-          <div className='flex w-full mt-1'>
-            <div className='w-[80%]'>
-              <LdTypo variant='body-xs'>
-                <b>OPTIMIZATION ALGORITHM PARAMETERS</b>{' '}
-                <small>
-                  (modify only if you know well the algorithm formulation)
-                </small>{' '}
-              </LdTypo>
-            </div>
-            <div className='w-[20%] flex-none'>
-              {selectedLines.length > 0 && (
-                <LdButton
-                  mode='ghost'
-                  size='sm'
-                  onClick={handleEditParameter}
-                  className='h-1'
-                >
-                  <LdIcon size='sm' name='pen' /> Edit Parameters
-                </LdButton>
-              )}
-            </div>
-          </div>
-          <div className='flex w-full mt-1'>
-            <div className='grid grid-cols-5 gap-1 w-full'>
-              <div>
-                <LdTypo variant='body-xs'>Weight Avoid Delay</LdTypo>
-                <LdInput
-                  size='sm'
-                  className='w-40'
-                  disabled={!isEditableParameter}
-                  type='number'
-                  min={0}
-                  value={parameterValue.weight_avoid_delay.toString()}
-                  onChange={handleInputParameterChange('weight_avoid_delay')}
-                />
-              </div>
-              <div>
-                <LdTypo variant='body-xs'>Weight Avoid Anticipation</LdTypo>
-                <LdInput
-                  size='sm'
-                  className='w-40'
-                  disabled={!isEditableParameter}
-                  type='number'
-                  min={0}
-                  value={parameterValue.weight_avoid_anticipation.toString()}
-                  onChange={handleInputParameterChange(
-                    'weight_avoid_anticipation'
-                  )}
-                />
-              </div>
-              <div>
-                <LdTypo variant='body-xs'>Weight Avoid Variability</LdTypo>
-                <LdInput
-                  size='sm'
-                  className='w-40'
-                  disabled={!isEditableParameter}
-                  type='number'
-                  min={0}
-                  value={parameterValue.weight_avoid_variability.toString()}
-                  onChange={handleInputParameterChange(
-                    'weight_avoid_variability'
-                  )}
-                />
-              </div>
-              <div>
-                <LdTypo variant='body-xs'>Weight Match Target D/C Ratio</LdTypo>
-                <LdInput
-                  size='sm'
-                  className='w-40'
-                  disabled={!isEditableParameter}
-                  type='number'
-                  min={0}
-                  value={parameterValue.weight_match_target_ratio.toString()}
-                  onChange={handleInputParameterChange(
-                    'weight_match_target_ratio'
-                  )}
-                />
-              </div>
-              <div>
-                <LdTypo variant='body-xs'>Target D/C Ratio (%)</LdTypo>
-                <LdInput
-                  size='sm'
-                  className='w-40'
-                  disabled={!isEditableParameter}
-                  type='number'
-                  min={0}
-                  value={parameterValue.target_dc_ratio.toString()}
-                  onChange={handleInputParameterChange('target_dc_ratio')}
-                />
-              </div>
-            </div>
-          </div>
-          <LdButton
-            slot='footer'
-            size='sm'
-            className='w-full'
-            onClick={saveRunCapaCityOptimazation}
-          >
-            <LdIcon size='sm' name='checkmark' /> Confirm and Run Optimization
-          </LdButton>
-        </LdModal>
-        {/* ------------------------ Optimazation Select line modal-------------------- */}
+        </div>
+        <LdButton
+          slot='footer'
+          size='sm'
+          className='w-full'
+          onClick={saveRunCapaCityOptimazation}
+        >
+          <LdIcon size='sm' name='checkmark' /> Confirm and Run Optimization
+        </LdButton>
+      </LdModal>
+      {/* ------------------------ Optimazation Select line modal-------------------- */}
 
-        {/* ----------------Simulation Modal end---------------------------   */}
-      </div>
+      {/* ----------------Simulation Modal end---------------------------   */}
       {/*-------------------------  simulation details page end ------------------------- */}
       {/*-------------------------  Projection chart details page end ------------------------- */}
       {/*-------------------------  Projection chart details page end ------------------------- */}
-      <div className='p-8 ax-w-screen-md mx-auto'>
+      <div className='my-5'>
         <LdCard className='w-full'>
           {SimulationID &&
             selectedLines &&
@@ -789,74 +785,74 @@ const SimulationView = () => {
         </LdCard>
       </div>
       {/*-------------------------  simulation capacity container start ------------------------- */}
-      <div className='p-8 ax-w-screen-md mx-auto'>
-        <LdCard className='w-full overflow-hidden'>
-          <div className='capacityTabs w-full'>
-            <LdTabs onLdtabchange={handleTabChange}>
-              <LdTablist rounded='all'>
-                <LdTab
-                  selected={activeTab === 0}
-                  onClick={() => switchTab(0)} // Switch to Capacity Inputs
-                >
-                  Capacity Inputs
-                </LdTab>
-                <LdTab
-                  selected={activeTab === 1}
-                  onClick={() => switchTab(1)} // Switch to Demand Inputs
-                >
-                  Demand Inputs
-                </LdTab>
-                <LdTab
-                  selected={activeTab === 2}
-                  onClick={() => switchTab(2)} // Switch to Simulation Result
-                >
-                  Simulation Result
-                </LdTab>
-              </LdTablist>
-              <LdTabpanellist>
-                <LdTabpanel>
-                  {SimulationID && Object.keys(CapacityData).length > 0 && (
-                    <CapacityInputs
-                      SimulationID={SimulationID}
-                      CapacityData={CapacityData}
-                      Lines={selectedLines}
-                      reloadCapacityData={getCapacityDetails}
-                      onCapacityModified={handleCapacityModified}
-                    />
-                  )}
-                </LdTabpanel>
-                <LdTabpanel>
-                  {SimulationID &&
-                    activeTab === 1 &&
-                    simLines.length > 0 &&
-                    Object.keys(demandInputsData).length > 0 && (
-                      <DemandInputs
-                        SimulationID={SimulationID}
-                        Lines={selectedLines}
-                        demandInputsData={demandInputsData}
-                        demandInputLoadAggData={demandInputLoadAggData}
-                        filterDemandInputsDataRef={filterDemandInputsDataRef}
-                        simulationLines={simLines}
-                        onDemandSave={handleDemandSave}
-                        getPlanDetailsLoadAgg={getPlanDetailsLoadAgg}
-                      />
-                    )}
-                </LdTabpanel>
-                <LdTabpanel>
-                  {SimulationID &&
-                    selectedLines &&
-                    simulationStatus &&
-                    Object.keys(CapacityData).length > 0 && (
-                      <SimulationResult
-                        SimulationStatus={simulationStatus}
-                        SimulationID={SimulationID}
-                        Lines={selectedLines}
-                      />
-                    )}
-                </LdTabpanel>
-              </LdTabpanellist>
-            </LdTabs>
+      <div className='my-5'>
+        <LdCard className='w-full overflow-hidden custom-tabs'>
+          <div className='flex justify-stretch w-full button-tab-group'>
+            <button
+              type='button'
+              className={`${activeTab === 0 && 'active'} bg-light`}
+              onClick={() => switchTab(0)}
+            >
+              Capacity Inputs
+            </button>
+            <button
+              type='button'
+              className={`${activeTab === 1 && 'active'} bg-light`}
+              onClick={() => switchTab(1)}
+            >
+              Demand Inputs
+            </button>
+            <button
+              type='button'
+              className={`${activeTab === 2 && 'active'} bg-light`}
+              onClick={() => switchTab(2)}
+            >
+              Simulation Result
+            </button>
           </div>
+          {SimulationID && Object.keys(CapacityData).length > 0 && (
+            <div className={`${activeTab !== 0 ? 'hidden' : ''}`}>
+              <CapacityInputs
+                SimulationID={SimulationID}
+                CapacityData={CapacityData}
+                Lines={selectedLines}
+                reloadCapacityData={getCapacityDetails}
+                onCapacityModified={handleCapacityModified}
+              />
+            </div>
+          )}
+          {SimulationID &&
+            simLines.length > 0 &&
+            Object.keys(demandInputsData).length > 0 && (
+              <div className={`${activeTab !== 1 ? 'hidden' : ''}`}>
+                <DemandInputs
+                  SimulationID={SimulationID}
+                  Lines={selectedLines}
+                  demandInputsData={demandInputsData}
+                  demandInputLoadAggData={demandInputLoadAggData}
+                  filterDemandInputsDataRef={filterDemandInputsDataRef}
+                  simulationLines={simLines}
+                  onDemandSave={handleDemandSave}
+                  getPlanDetailsLoadAgg={getPlanDetailsLoadAgg}
+                />
+              </div>
+            )}
+          {SimulationID &&
+            selectedLines &&
+            simulationStatus &&
+            Object.keys(CapacityData).length > 0 && (
+              <div
+                className={`${
+                  activeTab !== 2 ? 'hidden' : 'flex w-full overflow-hidden'
+                }`}
+              >
+                <SimulationResult
+                  SimulationStatus={simulationStatus}
+                  SimulationID={SimulationID}
+                  Lines={selectedLines}
+                />
+              </div>
+            )}
         </LdCard>
       </div>
       {/*-------------------------  simulation capacity container page end ------------------------- */}
