@@ -87,3 +87,7 @@ code {
 .custom-tabs ld-tab {
   justify-self: stretch;
 }
+
+.ld-input-message--error {
+  font-size: 12px;
+}
