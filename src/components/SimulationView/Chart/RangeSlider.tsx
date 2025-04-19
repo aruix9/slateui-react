@@ -121,7 +121,7 @@ const RangeSlider = ({
   }
 
   return (
-    <div className='customRangeSlider'>
+    <div className='customRangeSlider px-4'>
       <div className='rangeSlider'>
         <LdSlider
           indicators
