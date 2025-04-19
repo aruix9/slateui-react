@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import './rangeslider.css'
+import { LdSlider } from '@emdgroup-liquid/liquid/dist/react'
 
 const generateDateStops = (startDate: string, endDate: string): string[] => {
   const stops: string[] = []
@@ -47,6 +48,7 @@ const RangeSlider = ({
   simulationData: { init_date: string; end_date: string }
   handleSliderChange: (value: string[]) => void
 }) => {
+  const sliderRef = useRef(null)
   const [startDateValue, setStartDateValue] = useState<number>(0)
   const [endDateValue, setEndDateValue] = useState<number>(0)
   const [generatedDates, setGeneratedDates] = useState<string[]>([])
@@ -82,6 +84,8 @@ const RangeSlider = ({
     if (endDateIndex !== -1) {
       setEndDateValue(endDateIndex)
     }
+
+    updateSliderStyles(sliderRef.current, dateMapping[0], dateMapping[1])
   }, [simulationData])
 
   // Calculate the visible range (5 months)
@@ -91,80 +95,59 @@ const RangeSlider = ({
     startDateValue + 5
   )
 
+  const ldOnChange = (e: any) => {
+    const start = e.detail[0]
+    const end = e.detail[1]
+    setStartDateValue(start)
+    setEndDateValue(end)
+    updateSliderStyles(e.target, dateMap[start], dateMap[end])
+    handleSliderChange([dateMap[start], dateMap[end]])
+  }
+
+  const updateSliderStyles = (
+    slider: { shadowRoot: ShadowRoot | null } | null,
+    startDate: string,
+    endDate: string
+  ): void => {
+    if (slider && slider.shadowRoot) {
+      slider.shadowRoot.querySelector('style')?.remove()
+      const style = document.createElement('style')
+      style.textContent = `
+        .ld-slider__output[for="ld-slider-1-value-0"]:after {content: "${startDate}" !important;}
+        .ld-slider__output[for="ld-slider-1-value-1"]:after {content: "${endDate}" !important;}
+      `
+      slider.shadowRoot.appendChild(style)
+    }
+  }
+
   return (
     <div className='customRangeSlider'>
       <div className='rangeSlider'>
-        <input
-          type='range'
-          min='0'
+        <LdSlider
+          indicators
+          hideValueLabels
+          // hideValues
+          min={0}
           max={generatedDates.length - 1}
-          step='1'
-          className='startDateInput'
-          value={startDateValue}
-          onChange={(e) => {
-            const val = parseInt(e.target.value)
-            handleSliderChange([dateMap[val], dateMap[endDateValue]])
-            setStartDateValue(val)
-          }}
-        />
-        <input
-          type='range'
-          min='0'
-          max={generatedDates.length - 1}
-          step='1'
-          className='endDateInput'
-          value={endDateValue}
-          onChange={(e) => {
-            const val = parseInt(e.target.value)
-            handleSliderChange([dateMap[startDateValue], dateMap[val]])
-            setEndDateValue(val)
-          }}
-        />
-        <div className='rangeSliderTrack'>
-          <div
-            className='selectedRangeStart'
-            style={{
-              width: `${(startDateValue / (generatedDates.length - 1)) * 100}%`,
-            }}
-          ></div>
-          <div
-            className='selectedRangeEnd'
-            style={{
-              width: `${
-                (1 - endDateValue / (generatedDates.length - 1)) * 100
-              }%`, // Adjust width based on number of stops
-            }}
-          ></div>
-        </div>
-        <div className='selectedRange'></div>
-        <div
-          className='startValue'
-          style={{
-            left: `${(startDateValue / (generatedDates.length - 1)) * 1}%`, // Adjust position based on number of stops
-          }}
-        >
-          {dateMap[startDateValue]}
-        </div>
-        <div
-          className='endValue'
-          style={{
-            left: `${(endDateValue / (generatedDates.length - 1)) * 100}%`,
-          }} // Adjust position based on number of stops
-        >
-          {dateMap[endDateValue]}
-        </div>
+          value={`0, ${generatedDates.length}`}
+          step={1}
+          ref={sliderRef}
+          stops={Array.from({ length: generatedDates.length }, (_, i) => i)
+            .slice(1)
+            .join(',')}
+          onLdchange={ldOnChange}
+          style={{ '--now': 9897, '--value1': endDateValue }}
+        ></LdSlider>
       </div>
-      <div className='rangeLabel'>
-        {generatedDates && (
-          <div className='date-stops'>
-            {generatedDates
-              .slice(visibleStartIndex, visibleEndIndex + 1)
-              .map((dateStop, index) => (
-                <span key={index}>{dateStop}</span>
-              ))}
-          </div>
-        )}
-      </div>
+      {generatedDates && (
+        <div className='date-stops'>
+          {generatedDates
+            .slice(visibleStartIndex, visibleEndIndex + 1)
+            .map((dateStop, index) => (
+              <span key={index}>{dateStop}</span>
+            ))}
+        </div>
+      )}
     </div>
   )
 }
