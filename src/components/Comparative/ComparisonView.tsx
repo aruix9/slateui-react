@@ -6,7 +6,7 @@ import { display_notification } from '../../global/notification'
 import ComparisonFilter from './ComparisonFilter'
 import { LdProgress, LdLoading } from '@emdgroup-liquid/liquid/dist/react'
 
-import './Comparison.css'
+// import './Comparison.css'
 
 const apiUrl = process.env.REACT_APP_API_URL
 

@@ -91,3 +91,19 @@ code {
 .ld-input-message--error {
   font-size: 12px;
 }
+
+/* table */
+ld-table-head {
+  --ld-table-cell-padding-y: 12px;
+}
+ld-table-header {
+  font-size: 14px;
+  color: #31464c;
+  font-weight: 500;
+  background-color: #fff;
+}
+ld-table-cell,
+td {
+  font-size: 14px;
+  color: #31464c;
+}

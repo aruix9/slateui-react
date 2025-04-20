@@ -175,106 +175,117 @@ const SimulationMasterTable: React.FC = () => {
           aria-valuetext='indeterminate'
         />
       )}
-      <div className='slate-ui-container px-4 simulationMasterTable'>
-        <div className='py-4 justify-end flex gap-3'>
-          <LdButton
-            onClick={handleOpenCompareSimulationView}
-            disabled={isCompareSimulationsDisabled}
-            size='sm'
-            mode='highlight'
-          >
-            <LdIcon name='dashboard' size='sm' /> Compare Simulations
-          </LdButton>
-          <LdButton
-            onClick={handleOpenSimulationView}
-            disabled={isOpenSimulationDisabled}
-            size='sm'
-          >
-            <LdIcon name='external-export' size='sm' /> Open Simulation
-          </LdButton>
-          <LdButton
-            onClick={() => setConfirmDeleteOpen(true)}
-            disabled={isOpenSimulationDisabled}
-            size='sm'
-            mode='danger'
-          >
-            <LdIcon name='bin' size='sm' /> Delete Simulation
-          </LdButton>
+      <div className='slate-ui-container px-4 simulationMasterTable  mb-16'>
+        <div className='border border-b-2 mt-4 rounded-l overflow-hidden border-neutral-100 bg-wht'>
+          <h2 className='font-medium p-2 px-4 text-body-xl border-red-400 bg-neutral-100'>
+            Simulation List
+          </h2>
+          <div className='p-4  justify-end flex gap-3'>
+            <LdButton
+              onClick={handleOpenCompareSimulationView}
+              disabled={isCompareSimulationsDisabled}
+              size='sm'
+              mode='highlight'
+            >
+              <LdIcon name='dashboard' size='sm' /> Compare Simulations
+            </LdButton>
+            <LdButton
+              onClick={handleOpenSimulationView}
+              disabled={isOpenSimulationDisabled}
+              size='sm'
+            >
+              <LdIcon name='external-export' size='sm' /> Open Simulation
+            </LdButton>
+            <LdButton
+              onClick={() => setConfirmDeleteOpen(true)}
+              disabled={isOpenSimulationDisabled}
+              size='sm'
+              mode='danger'
+            >
+              <LdIcon name='bin' size='sm' /> Delete Simulation
+            </LdButton>
 
-          <button
-            onClick={openModal}
-            className='ld-button ld-button--success ld-button--ghost ld-button--sm'
-          >
-            <LdIcon name='add' size='sm' /> New Simulation
-          </button>
-        </div>
-        <div className='simulationMasterTableContainer overflow-x-auto mb-16'>
-          <LdTable style={{ maxHeight: '28.6rem' }}>
-            <LdTableHead>
-              <LdTableRow>
-                <LdTableHeader className='text-xs'></LdTableHeader>
-                <LdTableHeader className='text-xs'>PLANT</LdTableHeader>
-                <LdTableHeader className='text-xs'>NAME</LdTableHeader>
-                <LdTableHeader className='text-xs'>CYCLE KEY</LdTableHeader>
-                <LdTableHeader className='text-xs'>SCENARIO</LdTableHeader>
-                <LdTableHeader className='text-xs'>INITIAL DATE</LdTableHeader>
-                <LdTableHeader className='text-xs'>END DATE</LdTableHeader>
-                <LdTableHeader className='text-xs'>CREATED BY</LdTableHeader>
-                <LdTableHeader className='text-xs'>MODIFIED BY</LdTableHeader>
-                <LdTableHeader className='text-xs'>MODIFIED AT</LdTableHeader>
-                <LdTableHeader className='text-xs'>OPT.STATUS</LdTableHeader>
-              </LdTableRow>
-            </LdTableHead>
-            <LdTableBody>
-              {elements.length > 0 ? (
-                elements.map((element, index) => (
-                  <LdTableRow
-                    selectable
-                    key={element.simulation_id}
-                    onLdTableSelect={onSelect}
-                    style={{ '--ld-table-selection-wrapper-gradient': 'none' }}
-                  >
-                    <LdTableCell className='font-medium text-sm leading-4'>
-                      {element.plant}
-                    </LdTableCell>
-                    <LdTableCell className='font-medium text-sm leading-4 word-break w-[150px]'>
-                      {element.simulation_name}
-                    </LdTableCell>
-                    <LdTableCell className='font-medium text-sm leading-4'>
-                      {element.cycle_key}
-                    </LdTableCell>
-                    <LdTableCell className='font-medium text-sm leading-4 word-break'>
-                      {element.by_scenario}
-                    </LdTableCell>
-                    <LdTableCell className='font-medium text-sm leading-4'>
-                      {element.init_date}
-                    </LdTableCell>
-                    <LdTableCell className='font-medium text-sm leading-4'>
-                      {element.end_date}
-                    </LdTableCell>
-                    <LdTableCell className='font-medium text-sm leading-4'>
-                      {element.created_by_full_name}
-                    </LdTableCell>
-                    <LdTableCell className='font-medium text-sm leading-4'>
-                      {element.modified_by_full_name}
-                    </LdTableCell>
-                    <LdTableCell className='font-medium text-sm leading-4'>
-                      {new Date(element.modified_at).toLocaleString('en-us')}
-                    </LdTableCell>
-                    <LdTableCell className='font-medium text-sm leading-4'>
-                      {element.status}
+            <button
+              onClick={openModal}
+              className='ld-button ld-button--success ld-button--ghost ld-button--sm'
+            >
+              <LdIcon name='add' size='sm' /> New Simulation
+            </button>
+          </div>
+          <div className='simulationMasterTableContainer overflow-x-auto'>
+            <LdTable
+              style={{
+                maxHeight: '28.6rem',
+                '--ld-sp-1': '1px',
+              }}
+            >
+              <LdTableHead>
+                <LdTableRow>
+                  <LdTableHeader className='text-xs'></LdTableHeader>
+                  <LdTableHeader className='text-xs'>PLANT</LdTableHeader>
+                  <LdTableHeader className='text-xs'>NAME</LdTableHeader>
+                  <LdTableHeader className='text-xs'>CYCLE KEY</LdTableHeader>
+                  <LdTableHeader className='text-xs'>SCENARIO</LdTableHeader>
+                  <LdTableHeader className='text-xs'>
+                    INITIAL DATE
+                  </LdTableHeader>
+                  <LdTableHeader className='text-xs'>END DATE</LdTableHeader>
+                  <LdTableHeader className='text-xs'>CREATED BY</LdTableHeader>
+                  <LdTableHeader className='text-xs'>MODIFIED BY</LdTableHeader>
+                  <LdTableHeader className='text-xs'>MODIFIED AT</LdTableHeader>
+                  <LdTableHeader className='text-xs'>OPT.STATUS</LdTableHeader>
+                </LdTableRow>
+              </LdTableHead>
+              <LdTableBody>
+                {elements.length > 0 ? (
+                  elements.map((element, index) => (
+                    <LdTableRow
+                      selectable
+                      key={element.simulation_id}
+                      onLdTableSelect={onSelect}
+                    >
+                      <LdTableCell className='font-medium text-sm leading-4'>
+                        {element.plant}
+                      </LdTableCell>
+                      <LdTableCell className='font-medium text-sm leading-4 word-break w-[150px]'>
+                        {element.simulation_name}
+                      </LdTableCell>
+                      <LdTableCell className='font-medium text-sm leading-4'>
+                        {element.cycle_key}
+                      </LdTableCell>
+                      <LdTableCell className='font-medium text-sm leading-4 word-break'>
+                        {element.by_scenario}
+                      </LdTableCell>
+                      <LdTableCell className='font-medium text-sm leading-4'>
+                        {element.init_date}
+                      </LdTableCell>
+                      <LdTableCell className='font-medium text-sm leading-4'>
+                        {element.end_date}
+                      </LdTableCell>
+                      <LdTableCell className='font-medium text-sm leading-4'>
+                        {element.created_by_full_name}
+                      </LdTableCell>
+                      <LdTableCell className='font-medium text-sm leading-4'>
+                        {element.modified_by_full_name}
+                      </LdTableCell>
+                      <LdTableCell className='font-medium text-sm leading-4'>
+                        {new Date(element.modified_at).toLocaleString('en-us')}
+                      </LdTableCell>
+                      <LdTableCell className='font-medium text-sm leading-4'>
+                        {element.status}
+                      </LdTableCell>
+                    </LdTableRow>
+                  ))
+                ) : (
+                  <LdTableRow>
+                    <LdTableCell colspan={11} style={{ textAlign: 'center' }}>
+                      <LdLoading />
                     </LdTableCell>
                   </LdTableRow>
-                ))
-              ) : (
-                <LdTableRow>
-                  <LdTableCell colspan={11} style={{ textAlign: 'center' }}>
-                    <LdLoading />
-                  </LdTableCell>
-                </LdTableRow>
-              )}
-            </LdTableBody>
-          </LdTable>
+                )}
+              </LdTableBody>
+            </LdTable>
+          </div>
         </div>
       </div>
 

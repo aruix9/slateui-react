@@ -824,7 +824,11 @@ const SimulationView = () => {
           {SimulationID &&
             simLines.length > 0 &&
             Object.keys(demandInputsData).length > 0 && (
-              <div className={`${activeTab !== 1 ? 'hidden' : ''}`}>
+              <div
+                className={`${
+                  activeTab !== 1 ? 'hidden' : 'overflow-hidden max-w-full'
+                }`}
+              >
                 <DemandInputs
                   SimulationID={SimulationID}
                   Lines={selectedLines}

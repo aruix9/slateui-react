@@ -1,113 +1,103 @@
 .chartView-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
 }
-
 
 .charResponsive {
-    width: 97%;
-    padding: 20px 0;
+  width: 97%;
+  padding: 20px 0;
 }
-
 
 .chartMetric ld-tab {
-    color: aliceblue;
-    --ld-tab-bg-col: var(--ld-col-rb-100);
-    --ld-tab-text-col: var(--ld-thm-primary);
-    --ld-tab-bg-col-active: var(--ld-thm-primary);
-    --ld-tab-bg-col-focus: var(--ld-col-neutral-600);
-    --ld-tab-bg-col-hover: var(--ld-thm-primary);
-    --ld-tab-font-col-active: aliceblue;
+  color: aliceblue;
+  --ld-tab-bg-col: var(--ld-col-rb-100);
+  --ld-tab-text-col: var(--ld-thm-primary);
+  --ld-tab-bg-col-active: var(--ld-thm-primary);
+  --ld-tab-bg-col-focus: var(--ld-col-neutral-600);
+  --ld-tab-bg-col-hover: var(--ld-thm-primary);
+  --ld-tab-font-col-active: aliceblue;
 }
 
-
-
 .chart-summary-table {
-    margin-top: 1rem; /* mt-4 */
-    max-height: 32rem; 
-    width: 100%; /* w-full */
-    overflow-y: scroll; /* overflow-y-scroll */
-    overflow-x: scroll; /* overflow-x-scroll */
-    position: relative; /* Required for sticky positioning */
+  margin-top: 1rem; /* mt-4 */
+  max-height: 32rem;
+  width: 100%; /* w-full */
+  overflow-y: scroll; /* overflow-y-scroll */
+  overflow-x: scroll; /* overflow-x-scroll */
+  position: relative; /* Required for sticky positioning */
 }
 
 .chart-summary-table table {
-    color: #1c2127;
-    font-weight: 0;
-    letter-spacing: 0;
-    text-transform: none;
-    text-align: left;
-    font-family: Lato,Helvetica,Arial,sans-serif;
-    font-weight: normal;
-    color: #333;
-    font-size: 14px;
-    line-height: 20px;
-    box-sizing: inherit;
-    display: table;
-    position: absolute;
-    border: 1px solid #ddd;
-    max-height: 500px; /* Adjust the height as needed */
-    border-collapse: collapse;
-    position: relative; /* Changed from 'abslute' to 'relative' */
-    max-height: 450px; /* Adjust the height as needed */
-    width: 100%;
+  color: #1c2127;
+  font-weight: 0;
+  letter-spacing: 0;
+  text-transform: none;
+  text-align: left;
+  font-family: Lato, Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  color: #333;
+  font-size: 14px;
+  line-height: 20px;
+  box-sizing: inherit;
+  display: table;
+  position: absolute;
+  border: 1px solid #ddd;
+  max-height: 500px; /* Adjust the height as needed */
+  border-collapse: collapse;
+  position: relative; /* Changed from 'abslute' to 'relative' */
+  max-height: 450px; /* Adjust the height as needed */
+  width: 100%;
 }
 
-.chart-summary-table thead {
-position:sticky;
-top:0;
-z-index: 30;
+/* .chart-summary-table thead {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+} */
+
+.chart-summary-table th {
+  background-color: #e0e0e0;
+  text-align: center;
+  overflow-y: auto;
+  height: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  color: #1c2127;
+  white-space: nowrap;
+  padding: 8px;
 }
 
-
-.chart-summary-table  th {
-background-color: #e0e0e0;
-text-align: center;
-overflow-y: auto; 
-height: 20px; 
-position: sticky; 
-top: 0;
-z-index: 10;
-color: #1c2127;
-white-space: nowrap;
-padding: 8px;
+.chart-summary-table td {
+  text-align: right;
+  overflow: auto;
+  position: relative;
+  padding-right: 8px;
+  white-space: nowrap;
+  padding: 3px 5px;
 }
 
-.chart-summary-table  td {
-
-text-align: right;
-overflow: auto;
-position: relative;
-padding-right:8px;
-white-space: nowrap;
-padding: 3px 5px;
-}
-
-.chart-summary-table  th.sticky, td.sticky {
-position: sticky;
-left: 0;
-z-index: 20;
-    background-color: #f2f2f2;
-}
+/* .chart-summary-table th.sticky,
+td.sticky {
+  position: sticky;
+  left: 0;
+  z-index: 20;
+  background-color: #f2f2f2;
+} */
 
 .sticky-adjust {
-position: sticky;
-z-index: 20;
+  position: sticky;
+  z-index: 20;
 }
 
 .checkbox-cell {
-    width: 40px; /* Adjust this value as needed */
-    text-align: center;
+  width: 40px; /* Adjust this value as needed */
+  text-align: center;
 }
 .remark-border {
-    border-top: 4px solid black; 
-border-bottom: 4px solid black;
+  border-top: 4px solid black;
+  border-bottom: 4px solid black;
 }
-
-
-
-
-
