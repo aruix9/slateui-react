@@ -197,8 +197,6 @@ const SimulationView = () => {
         axios.get(`${apiUrl}/loadAgg`),
       ])
 
-      console.log(inputsRes.data, loadAggRes.data)
-
       if (inputsRes && inputsRes.data) {
         setDemandInputsData(inputsRes.data)
       } else {

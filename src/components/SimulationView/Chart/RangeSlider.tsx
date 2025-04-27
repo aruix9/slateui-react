@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import './rangeslider.css'
 import { LdLoading, LdSlider } from '@emdgroup-liquid/liquid/dist/react'
 
@@ -51,6 +51,28 @@ const RangeSlider = ({
   const [endDateValue, setEndDateValue] = useState<number>(0)
   const [generatedDates, setGeneratedDates] = useState<string[]>([])
   const [dateMap, setDateMap] = useState<{ [key: number]: string }>({})
+
+  // const sliderRef = useRef(null)
+  const [sliderNode, setSliderNode] = useState(null)
+
+  // useEffect(() => {
+  //   if (sliderRef.current) {
+  //     console.log('Input ref:', sliderRef.current)
+
+  //     // updateSliderStyles(sliderRef, dateMap[0], dateMap[1])
+  //     // inputRef.current.focus(); // Example usage
+  //   }
+  // }, [])
+
+  const refCallback = useCallback(
+    (node: HTMLLdSliderElement) => {
+      if (node) {
+        updateSliderStyles(node, dateMap[0], dateMap[1])
+      }
+      setSliderNode(null)
+    },
+    [dateMap]
+  )
 
   useEffect(() => {
     const generateDates = generateDateStops(
@@ -112,42 +134,33 @@ const RangeSlider = ({
     handleSliderChange([dateMap[start], dateMap[end]])
   }
 
-  const sliderRef = (element: HTMLLdSliderElement) => {
-    updateSliderStyles(element, dateMap[0], dateMap[1])
-  }
-
   const updateSliderStyles = (
     slider: { shadowRoot: ShadowRoot | null } | null,
     startDate: string,
     endDate: string
   ): void => {
     if (slider && slider.shadowRoot) {
-      const styleElement = slider.shadowRoot.querySelector('style')
-      if (styleElement) {
-        if (
-          styleElement.textContent !==
-          `
-          .ld-slider__output[for="ld-slider-1-value-0"]:after {content: "${startDate}" !important;}
-          .ld-slider__output[for="ld-slider-1-value-1"]:after {content: "${endDate}" !important;}
+      const styleId = 'custom-style'
+      let styleTag = slider.shadowRoot.getElementById('custom-style')
+      if (styleTag) {
+        styleTag.textContent = `
+          .ld-slider__output:nth-of-type(1):after {content: "${startDate}" !important;}
+          .ld-slider__output:nth-of-type(2):after {content: "${endDate}" !important;}
         `
-        ) {
-          styleElement.textContent = `
-            .ld-slider__output[for="ld-slider-1-value-0"]:after {content: "${startDate}" !important;}
-            .ld-slider__output[for="ld-slider-1-value-1"]:after {content: "${endDate}" !important;}
-          `
-        }
       } else {
         const newStyle = document.createElement('style')
+        newStyle.id = styleId
+        newStyle.setAttribute('data-added', 'true')
         newStyle.textContent = `
-          .ld-slider__output[for="ld-slider-1-value-0"]:after {content: "${startDate}" !important;}
-          .ld-slider__output[for="ld-slider-1-value-1"]:after {content: "${endDate}" !important;}
+          .ld-slider__output:nth-of-type(1):after {content: "${startDate}" !important;}
+          .ld-slider__output:nth-of-type(2):after {content: "${endDate}" !important;}
         `
         slider.shadowRoot.appendChild(newStyle)
       }
     }
   }
 
-  if (!sliderRef || !Object.keys(dateMap).length) {
+  if (!Object.keys(dateMap).length) {
     return <LdLoading />
   }
 
@@ -161,7 +174,7 @@ const RangeSlider = ({
             max={generatedDates.length - 1}
             value={`${startDateValue},${endDateValue}`}
             step={1}
-            ref={sliderRef}
+            ref={refCallback}
             stops={Array.from({ length: generatedDates.length }, (_, i) => i)
               .slice(1)
               .join(',')}
