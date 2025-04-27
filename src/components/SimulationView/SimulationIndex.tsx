@@ -197,6 +197,8 @@ const SimulationView = () => {
         axios.get(`${apiUrl}/loadAgg`),
       ])
 
+      console.log(inputsRes.data, loadAggRes.data)
+
       if (inputsRes && inputsRes.data) {
         setDemandInputsData(inputsRes.data)
       } else {
@@ -804,25 +806,27 @@ const SimulationView = () => {
             </div>
           )}
           {SimulationID &&
-            simLines.length > 0 &&
-            Object.keys(demandInputsData).length > 0 && (
-              <div
-                className={`${
-                  activeTab !== 1 ? 'hidden' : 'overflow-hidden max-w-full'
-                }`}
-              >
-                <DemandInputs
-                  SimulationID={SimulationID}
-                  Lines={selectedLines}
-                  demandInputsData={demandInputsData}
-                  demandInputLoadAggData={demandInputLoadAggData}
-                  filterDemandInputsDataRef={filterDemandInputsDataRef}
-                  simulationLines={simLines}
-                  onDemandSave={handleDemandSave}
-                  getPlanDetailsLoadAgg={getPlanDetailsLoadAgg}
-                />
-              </div>
-            )}
+          simLines.length > 0 &&
+          Object.keys(demandInputsData).length > 0 ? (
+            <div
+              className={`${
+                activeTab !== 1 ? 'hidden' : 'overflow-hidden max-w-full'
+              }`}
+            >
+              <DemandInputs
+                SimulationID={SimulationID}
+                Lines={selectedLines}
+                demandInputsData={demandInputsData}
+                demandInputLoadAggData={demandInputLoadAggData}
+                filterDemandInputsDataRef={filterDemandInputsDataRef}
+                simulationLines={simLines}
+                onDemandSave={handleDemandSave}
+                getPlanDetailsLoadAgg={getPlanDetailsLoadAgg}
+              />
+            </div>
+          ) : (
+            <LdLoading />
+          )}
           {SimulationID &&
             selectedLines &&
             simulationStatus &&

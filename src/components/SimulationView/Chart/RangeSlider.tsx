@@ -147,7 +147,7 @@ const RangeSlider = ({
     }
   }
 
-  if (!Object.keys(dateMap).length) {
+  if (!sliderRef || !Object.keys(dateMap).length) {
     return <LdLoading />
   }
 
