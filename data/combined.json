@@ -12761,7 +12761,7 @@
       }
     }
   },
-  "compareSimulations": {
+  "comparison": {
     "SITE_MOLLET_2024_F3_MAX_FC_API-CON_1741777739": {
       "capacity": {
         "MOL-PACK-LIBLI-8": {

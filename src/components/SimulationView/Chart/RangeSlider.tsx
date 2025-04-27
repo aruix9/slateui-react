@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import './rangeslider.css'
-import { LdSlider } from '@emdgroup-liquid/liquid/dist/react'
+import { LdLoading, LdSlider } from '@emdgroup-liquid/liquid/dist/react'
 
 const generateDateStops = (startDate: string, endDate: string): string[] => {
   const stops: string[] = []
@@ -13,16 +13,15 @@ const generateDateStops = (startDate: string, endDate: string): string[] => {
   // Generate all months between start and end dates
   let currentDate = new Date(start)
   while (currentDate < end) {
-    // Use < to exclude the end month
     const formattedDate = currentDate.toLocaleString('default', {
       month: '2-digit',
       year: 'numeric',
-    }) // Format as MM/YYYY
+    })
     stops.push(formattedDate)
     currentDate.setMonth(currentDate.getMonth() + 1) // Increment by 1 month
   }
 
-  // If you want to include the last month if it is not already included
+  // Include the last month if it is not already included
   if (currentDate.getTime() === end.getTime()) {
     const formattedDate = currentDate.toLocaleString('default', {
       month: '2-digit',
@@ -48,7 +47,6 @@ const RangeSlider = ({
   simulationData: { init_date: string; end_date: string }
   handleSliderChange: (value: string[]) => void
 }) => {
-  const sliderRef = useRef(null)
   const [startDateValue, setStartDateValue] = useState<number>(0)
   const [endDateValue, setEndDateValue] = useState<number>(0)
   const [generatedDates, setGeneratedDates] = useState<string[]>([])
@@ -84,8 +82,6 @@ const RangeSlider = ({
     if (endDateIndex !== -1) {
       setEndDateValue(endDateIndex)
     }
-
-    updateSliderStyles(sliderRef.current, dateMapping[0], dateMapping[1])
   }, [simulationData])
 
   // Calculate the visible range (5 months)
@@ -98,10 +94,26 @@ const RangeSlider = ({
   const ldOnChange = (e: any) => {
     const start = e.detail[0]
     const end = e.detail[1]
+
+    // Validate the indices
+    if (
+      start < 0 ||
+      end < 0 ||
+      start >= generatedDates.length ||
+      end >= generatedDates.length
+    ) {
+      console.warn('Invalid slider values:', start, end)
+      return // Exit if values are out of bounds
+    }
+
     setStartDateValue(start)
     setEndDateValue(end)
     updateSliderStyles(e.target, dateMap[start], dateMap[end])
     handleSliderChange([dateMap[start], dateMap[end]])
+  }
+
+  const sliderRef = (element: HTMLLdSliderElement) => {
+    updateSliderStyles(element, dateMap[0], dateMap[1])
   }
 
   const updateSliderStyles = (
@@ -110,34 +122,53 @@ const RangeSlider = ({
     endDate: string
   ): void => {
     if (slider && slider.shadowRoot) {
-      slider.shadowRoot.querySelector('style')?.remove()
-      const style = document.createElement('style')
-      style.textContent = `
-        .ld-slider__output[for="ld-slider-1-value-0"]:after {content: "${startDate}" !important;}
-        .ld-slider__output[for="ld-slider-1-value-1"]:after {content: "${endDate}" !important;}
-      `
-      slider.shadowRoot.appendChild(style)
+      const styleElement = slider.shadowRoot.querySelector('style')
+      if (styleElement) {
+        if (
+          styleElement.textContent !==
+          `
+          .ld-slider__output[for="ld-slider-1-value-0"]:after {content: "${startDate}" !important;}
+          .ld-slider__output[for="ld-slider-1-value-1"]:after {content: "${endDate}" !important;}
+        `
+        ) {
+          styleElement.textContent = `
+            .ld-slider__output[for="ld-slider-1-value-0"]:after {content: "${startDate}" !important;}
+            .ld-slider__output[for="ld-slider-1-value-1"]:after {content: "${endDate}" !important;}
+          `
+        }
+      } else {
+        const newStyle = document.createElement('style')
+        newStyle.textContent = `
+          .ld-slider__output[for="ld-slider-1-value-0"]:after {content: "${startDate}" !important;}
+          .ld-slider__output[for="ld-slider-1-value-1"]:after {content: "${endDate}" !important;}
+        `
+        slider.shadowRoot.appendChild(newStyle)
+      }
     }
   }
 
+  if (!Object.keys(dateMap).length) {
+    return <LdLoading />
+  }
+
   return (
-    <div className='customRangeSlider px-4'>
+    <div className='customRangeSlider'>
       <div className='rangeSlider'>
-        <LdSlider
-          indicators
-          hideValueLabels
-          // hideValues
-          min={0}
-          max={generatedDates.length - 1}
-          value={`0, ${generatedDates.length}`}
-          step={1}
-          ref={sliderRef}
-          stops={Array.from({ length: generatedDates.length }, (_, i) => i)
-            .slice(1)
-            .join(',')}
-          onLdchange={ldOnChange}
-          style={{ '--now': 9897, '--value1': endDateValue }}
-        ></LdSlider>
+        {Object.keys(dateMap).length && (
+          <LdSlider
+            hideValueLabels
+            min={0}
+            max={generatedDates.length - 1}
+            value={`${startDateValue},${endDateValue}`}
+            step={1}
+            ref={sliderRef}
+            stops={Array.from({ length: generatedDates.length }, (_, i) => i)
+              .slice(1)
+              .join(',')}
+            onLdchange={ldOnChange}
+            style={{ '--now': 9897, '--value1': endDateValue }}
+          ></LdSlider>
+        )}
       </div>
       {generatedDates && (
         <div className='date-stops'>

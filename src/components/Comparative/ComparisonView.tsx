@@ -6,9 +6,9 @@ import { display_notification } from '../../global/notification'
 import ComparisonFilter from './ComparisonFilter'
 import { LdProgress, LdLoading } from '@emdgroup-liquid/liquid/dist/react'
 
-// import './Comparison.css'
+import './Comparison.css'
 
-const apiUrl = process.env.REACT_APP_API_URL
+const apiUrl = process.env.REACT_APP_API_URL1
 
 interface Result {
   LINE: string[]
@@ -290,6 +290,23 @@ function getFinalCapacityData(capacity_data_all: any, baseline_capacity: any) {
   return capacity_data_all
 }
 
+const simulationMinMaxDate = (minDates: string[], maxDates: string[]) => {
+  const minDate = new Date(
+    Math.min(...minDates.map((date: string) => new Date(date).getTime()))
+  )
+  const maxDate = new Date(
+    Math.max(...maxDates.map((date: string) => new Date(date).getTime()))
+  )
+
+  const formattedMinDate = minDate.toISOString().split('T')[0] // 'YYYY-MM-DD' format
+  const formattedMaxDate = maxDate.toISOString().split('T')[0] // 'YYYY-MM-DD' format
+
+  return {
+    lowestMinDate: formattedMinDate,
+    highestMaxDate: formattedMaxDate,
+  }
+}
+
 const ComparisonView: React.FC = () => {
   const { SimulationID1, SimulationID2, PlantID } = useParams<{
     SimulationID1: string
@@ -423,16 +440,10 @@ const ComparisonView: React.FC = () => {
                 optimization_results['DATE'][idx]
           )
 
-          // Debugging: Log the filtered results
-          // console.log(`Index: ${idx}, OEE: ${filteredOEE}, Hours per Shift: ${filteredHoursPerShift}`);
-
-          // Check if filtered arrays have values before accessing
           if (filteredOEE.length === 0 || filteredHoursPerShift.length === 0) {
-            // console.warn(`No matching OEE or hours per shift for index ${idx}`);
-            return 0 // Return a default value or handle as needed
+            return 0
           }
 
-          // Assuming you want to multiply the first element of each filtered array
           const capacityHour = Math.round(
             value * filteredOEE[0] * filteredHoursPerShift[0]
           )
@@ -515,12 +526,23 @@ const ComparisonView: React.FC = () => {
           baseline_capacity
         )
 
+        const { lowestMinDate, highestMaxDate } = simulationMinMaxDate(
+          comparativeData.comparison.min_dates,
+          comparativeData.comparison.max_dates
+        )
+
+        const simulationDetails = {
+          init_date: lowestMinDate,
+          end_date: highestMaxDate,
+        }
+
         const results = {
           data: {
             load: load_data_all,
             capacity: capacity,
           },
           comparision_simulation_ids: comparativeData.comparison,
+          SimulationData: simulationDetails,
         }
 
         return results
@@ -530,32 +552,27 @@ const ComparisonView: React.FC = () => {
   )
 
   return (
-    <div>
+    <div className='slate-ui-container'>
       {isLoadingProgress ? (
-        <div>
+        <>
           <LdProgress
             className='w-full'
             pending
             ariaValuemax={100}
             aria-valuetext='indeterminate'
           />
-          <div className='flex items-center mt-4'>
-            {' '}
-            {/* Added margin-top for spacing */}
+          <div className='flex items-center justify-center mt-4'>
             <LdLoading />
             <span className='ml-2'>
               Please wait while the simulation results are being prepared...
             </span>
           </div>
-        </div>
+        </>
       ) : comparativeData && Object.keys(comparativeData).length > 0 ? (
         <ComparisonFilter results={comparativeData} />
       ) : (
-        <div className='flex items-center mt-4'>
-          <span className='ml-2'>
-            {' '}
-            No data available for selected Simulations
-          </span>
+        <div className='flex items-center justify-center mt-4'>
+          No data available for selected Simulations
         </div>
       )}
     </div>

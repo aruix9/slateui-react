@@ -77,6 +77,19 @@ code {
 .button-tab-group button.active {
   border-color: var(--ld-thm-primary);
 }
+.button-tab-group.rounded {
+  border-radius: 0.25rem;
+}
+.button-tab-group button.primary {
+  border: 0;
+  padding: 8px;
+  color: var(--ld-thm-primary);
+  background-color: #d8eaf8;
+}
+.button-tab-group button.primary.active {
+  color: #d8eaf8;
+  background-color: var(--ld-thm-primary);
+}
 
 /* tabs */
 .custom-tabs ld-tablist {

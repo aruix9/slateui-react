@@ -159,24 +159,6 @@ const SimulationView = () => {
     ]
     setsimLines(data)
     setSelectedLines([data[0]])
-
-    // axios
-    //     .get(`${apiUrl}/plant/${PlantID}/lines`)
-    //     .then((res) => {
-    //         if (res.data){
-    //             setsimLines(res.data);
-    //             const newLines = Object.keys(res.data);
-    //             if (res.data.length > 0) {
-    //                 setSelectedLines([res.data[0]]);
-    //             }
-    //         }
-    //         else{
-    //             display_notification('warn','No simulation master Lines data returned');
-    //         }
-    //     })
-    //     .catch((err) => {
-    //         display_notification('alert','An error ocurred while simulation master Lines data');
-    //     })
   }, [])
 
   const getCapacityDetails = useCallback(

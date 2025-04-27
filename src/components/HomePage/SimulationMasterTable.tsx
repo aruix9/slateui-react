@@ -248,7 +248,7 @@ const SimulationMasterTable: React.FC = () => {
                         {element.plant}
                       </LdTableCell>
                       <LdTableCell className='font-medium text-sm leading-4 word-break w-[150px]'>
-                        {element.simulation_name}
+                        {element.simulation_name} <br /> {element.simulation_id}
                       </LdTableCell>
                       <LdTableCell className='font-medium text-sm leading-4'>
                         {element.cycle_key}
