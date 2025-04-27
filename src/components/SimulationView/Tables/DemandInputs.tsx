@@ -135,6 +135,7 @@ const DemandInputTable: React.FC<DemandInputTableProps> = ({
 
   const demandLoadAgg = useMemo(() => {
     const demandLoadAggData = demandInputLoadAggData
+    // return {}
     return Object.keys(demandLoadAggData).reduce((obj, key) => {
       if (Lines.includes(key)) {
         obj[key] = demandLoadAggData[key]
@@ -1073,383 +1074,358 @@ const DemandInputTable: React.FC<DemandInputTableProps> = ({
     }
   )
 
+  if (!Object.keys(demandLoadAgg).length) {
+    return (
+      <div className='text-center mt-4'>
+        <LdLoading /> <LdTypo>Loading Demand Input Data...</LdTypo>
+      </div>
+    )
+  }
+
   return (
-    <>
-      {loading ? (
-        <div className='text-center mt-4'>
-          <LdLoading /> <LdTypo>Loading Demand Input Data...</LdTypo>
-        </div>
-      ) : (
-        <div className='mt-4'>
-          {Object.keys(demandLoadAgg).length > 0 ? (
-            <div className='overflow-hidden'>
-              <div className='flex items-center mt-2 space-x-2 justify-end px-2'>
-                <LdButton
-                  size='sm'
-                  onClick={onDemandSave}
-                  className='simulationView-header-button'
-                >
-                  Update chart & Table
-                </LdButton>
-                <LdButton
-                  size='sm'
-                  onClick={openAddnewSku}
-                  className='simulationView-header-button'
-                >
-                  Add New Row
-                </LdButton>
-                <LdButton
-                  mode='highlight'
-                  disabled
-                  size='sm'
-                  className='simulationView-header-button'
-                >
-                  Reset Data
-                </LdButton>
-                <LdButton
-                  size='sm'
-                  onClick={saveDemandInput}
-                  className='simulationView-header-button'
-                >
-                  Save Data
-                </LdButton>
-                <LdButton
-                  size='sm'
-                  onClick={duplicateRowApiCall}
-                  className='simulationView-header-button'
-                >
-                  Duplicate Row
-                </LdButton>
-                <LdButton
-                  size='sm'
-                  onClick={() => setIsFilterColumModal(true)}
-                  className='ld-theme-tea simulationView-header-button'
-                >
-                  Select Columns
-                </LdButton>
-              </div>
-              <div
-                id='demandInputTbl'
-                className='mt-4 max-h-[32rem] overflow-auto'
-              >
-                <table id='products-table'>
-                  <thead>
-                    {/* First table tr start */}
-                    {showUnitsColumns && showUnitsColumns.length > 0 ? (
-                      <tr>
+    <div className='mt-4'>
+      {Object.keys(demandLoadAgg).length > 0 ? (
+        <div className='overflow-hidden'>
+          <div className='flex items-center mt-2 space-x-2 justify-end px-2'>
+            <LdButton
+              size='sm'
+              onClick={onDemandSave}
+              className='simulationView-header-button'
+            >
+              Update chart & Table
+            </LdButton>
+            <LdButton
+              size='sm'
+              onClick={openAddnewSku}
+              className='simulationView-header-button'
+            >
+              Add New Row
+            </LdButton>
+            <LdButton
+              mode='highlight'
+              disabled
+              size='sm'
+              className='simulationView-header-button'
+            >
+              Reset Data
+            </LdButton>
+            <LdButton
+              size='sm'
+              onClick={saveDemandInput}
+              className='simulationView-header-button'
+            >
+              Save Data
+            </LdButton>
+            <LdButton
+              size='sm'
+              onClick={duplicateRowApiCall}
+              className='simulationView-header-button'
+            >
+              Duplicate Row
+            </LdButton>
+            <LdButton
+              size='sm'
+              onClick={() => setIsFilterColumModal(true)}
+              className='ld-theme-tea simulationView-header-button'
+            >
+              Select Columns
+            </LdButton>
+          </div>
+          <div id='demandInputTbl' className='mt-4 max-h-[32rem] overflow-auto'>
+            <table id='products-table'>
+              <thead>
+                {/* First table tr start */}
+                {showUnitsColumns && showUnitsColumns.length > 0 ? (
+                  <tr>
+                    <th
+                      style={{ width: '40px' }}
+                      colSpan={showTableColumns.length + 2}
+                      className='sticky first_cell'
+                    ></th>
+                    {Object.keys(demandLoadAgg).map((lineKey, index) => {
+                      const lineData = demandLoadAgg[lineKey]
+                      return lineData.DATE.map((date, dateIndex) => (
                         <th
-                          style={{ width: '40px' }}
-                          colSpan={showTableColumns.length + 2}
-                          className='sticky first_cell'
-                        ></th>
-                        {Object.keys(demandLoadAgg).map((lineKey, index) => {
-                          const lineData = demandLoadAgg[lineKey]
-                          return lineData.DATE.map((date, dateIndex) => (
-                            <th
-                              className='dm-custom-th'
-                              key={`date-header-${date}-${dateIndex}`}
-                              colSpan={showUnitsColumns.length}
-                            >
-                              {date.replace(/_/g, '-')}
-                            </th>
-                          ))
-                        })}
-                      </tr>
-                    ) : null}
-                    {/* End First table tr start */}
-                    {/*---------------- Dynamic tr with show columns table tr start------------------------- */}
-                    <tr>
-                      <th
-                        style={{ width: '40px' }}
-                        className='sticky first_cell'
-                      ></th>
-                      <th className='sticky line_cell'>
-                        LINE <span className='filter-icon'>▼</span>
-                        <br />
-                        <div>
+                          className='dm-custom-th'
+                          key={`date-header-${date}-${dateIndex}`}
+                          colSpan={showUnitsColumns.length}
+                        >
+                          {date.replace(/_/g, '-')}
+                        </th>
+                      ))
+                    })}
+                  </tr>
+                ) : null}
+                {/* End First table tr start */}
+                {/*---------------- Dynamic tr with show columns table tr start------------------------- */}
+                <tr>
+                  <th
+                    style={{ width: '40px' }}
+                    className='sticky first_cell'
+                  ></th>
+                  <th className='sticky line_cell'>
+                    LINE <span className='filter-icon'>▼</span>
+                    <br />
+                    <div>
+                      <select
+                        onChange={(e) => filterTable(e, 'LINE')}
+                        className='flex-none filter-dropdown hidden'
+                        placeholder='ALL'
+                      >
+                        <option key='' value=''>
+                          ALL
+                        </option>
+                        {Lines.map((line) => (
+                          <option key={`line-option-${line}`} value={line}>
+                            {line}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </th>
+                  {showTableColumns.map((col, index) => (
+                    <th
+                      key={`header-${col}-${index}`}
+                      className={`sticky ${col}`}
+                    >
+                      {col === 'LINES_NUMBER' ||
+                      col === 'IOP_BRAND' ||
+                      col === 'IOP_PRODUCT' ||
+                      col === 'IOP_STRENGTH' ? (
+                        <>
+                          {col
+                            .replace(/IOP_/g, '')
+                            .replace(/_/g, ' ')
+                            .toUpperCase()}
+                          <span
+                            onClick={(e) =>
+                              toggleDropdown(e.currentTarget.nextElementSibling)
+                            }
+                            className='filter-icon'
+                          >
+                            ▼
+                          </span>
                           <select
-                            onChange={(e) => filterTable(e, 'LINE')}
+                            onChange={(e) => filterTable(e, col)}
                             className='flex-none filter-dropdown hidden'
                             placeholder='ALL'
                           >
                             <option key='' value=''>
                               ALL
                             </option>
-                            {Lines.map((line) => (
-                              <option key={`line-option-${line}`} value={line}>
-                                {line}
+                            {uniqueValues[col].map((value) => (
+                              <option
+                                key={`value-option-${value}`}
+                                value={value}
+                              >
+                                {value}
                               </option>
                             ))}
                           </select>
-                        </div>
-                      </th>
-                      {showTableColumns.map((col, index) => (
-                        <th
-                          key={`header-${col}-${index}`}
-                          className={`sticky ${col}`}
-                        >
-                          {col === 'LINES_NUMBER' ||
-                          col === 'IOP_BRAND' ||
-                          col === 'IOP_PRODUCT' ||
-                          col === 'IOP_STRENGTH' ? (
-                            <>
-                              {col
-                                .replace(/IOP_/g, '')
-                                .replace(/_/g, ' ')
-                                .toUpperCase()}
-                              <span
-                                onClick={(e) =>
-                                  toggleDropdown(
-                                    e.currentTarget.nextElementSibling
-                                  )
-                                }
-                                className='filter-icon'
-                              >
-                                ▼
-                              </span>
-                              <select
-                                onChange={(e) => filterTable(e, col)}
-                                className='flex-none filter-dropdown hidden'
-                                placeholder='ALL'
-                              >
-                                <option key='' value=''>
-                                  ALL
-                                </option>
-                                {uniqueValues[col].map((value) => (
-                                  <option
-                                    key={`value-option-${value}`}
-                                    value={value}
-                                  >
-                                    {value}
-                                  </option>
-                                ))}
-                              </select>
-                            </>
-                          ) : (
-                            col
-                              .replace(/IOP_/g, '')
-                              .replace(/_/g, ' ')
-                              .toUpperCase()
-                          )}
-                        </th>
-                      ))}
-                      {/* ------------------------------Date based header start here------------------------  */}
-                      {Object.keys(demandLoadAgg).map((lineKey, index) => {
-                        const lineData = demandLoadAgg[lineKey]
-                        return lineData.DATE.map((date, dateIndex) => (
+                        </>
+                      ) : (
+                        col
+                          .replace(/IOP_/g, '')
+                          .replace(/_/g, ' ')
+                          .toUpperCase()
+                      )}
+                    </th>
+                  ))}
+                  {/* ------------------------------Date based header start here------------------------  */}
+                  {Object.keys(demandLoadAgg).map((lineKey, index) => {
+                    const lineData = demandLoadAgg[lineKey]
+                    return lineData.DATE.map((date, dateIndex) => (
+                      <React.Fragment key={`units-header-${date}-${dateIndex}`}>
+                        {showUnitsColumns.includes('HOURS') && (
+                          <th key={`hours-header-${date}`}>HOURS </th>
+                        )}
+                        {showUnitsColumns.includes('QTY') && (
+                          <th key={`qty-header-${date}`}>QTY </th>
+                        )}
+                        {showUnitsColumns.includes('BATCHES') && (
+                          <th key={`batches-header-${date}`}>BATCHES </th>
+                        )}
+                        {showUnitsColumns.includes('PALLETS') && (
+                          <th key={`pallets-header-${date}`}>PALLETS </th>
+                        )}
+                        {showUnitsColumns.includes('ABSORPTION') && (
+                          <th key={`absorption-header-${date}`}>ABSORPTION </th>
+                        )}
+                      </React.Fragment>
+                    ))
+                  })}
+                  {/* ------------------------------End Date based header start here--------------------  */}
+                </tr>
+                {/* --------------------------------- Totals -------------------------------------- */}
+                {showUnitsColumns && showUnitsColumns.length > 0 ? (
+                  <tr>
+                    <th
+                      className='sticky dm-custom-total first_cell'
+                      colSpan={showTableColumns.length + 2}
+                    ></th>
+                    {Object.keys(demandLoadAgg).map((lineKey, index) => {
+                      const lineData = demandLoadAgg[lineKey]
+                      return lineData.DATE.map((date, dateIndex) => {
+                        const formattedDate = date.replace(/-/g, '_') // Change date format
+                        return (
                           <React.Fragment
-                            key={`units-header-${date}-${dateIndex}`}
+                            key={`units-header-${formattedDate}-${dateIndex}`}
                           >
                             {showUnitsColumns.includes('HOURS') && (
-                              <th key={`hours-header-${date}`}>HOURS </th>
+                              <th key={`hours-total-header-${formattedDate}`}>
+                                <span
+                                  datatotal={lineData.HOURS[dateIndex]}
+                                  className='head_total'
+                                  id={`total-${formattedDate}_HOURS`}
+                                >
+                                  {formatWithCommas(lineData.HOURS[dateIndex])}
+                                </span>
+                              </th>
                             )}
                             {showUnitsColumns.includes('QTY') && (
-                              <th key={`qty-header-${date}`}>QTY </th>
+                              <th key={`qty-total-header-${formattedDate}`}>
+                                <span
+                                  datatotal={lineData.QTY[dateIndex]}
+                                  className='head_total'
+                                  id={`total-${formattedDate}_QTY`}
+                                >
+                                  {formatWithCommas(lineData.QTY[dateIndex])}
+                                </span>
+                              </th>
                             )}
                             {showUnitsColumns.includes('BATCHES') && (
-                              <th key={`batches-header-${date}`}>BATCHES </th>
+                              <th key={`batches-total-header-${formattedDate}`}>
+                                <span
+                                  datatotal={lineData.BATCHES[dateIndex]}
+                                  className='head_total'
+                                  id={`total-${formattedDate}_BATCHES`}
+                                >
+                                  {formatWithCommas(
+                                    lineData.BATCHES[dateIndex]
+                                  )}
+                                </span>
+                              </th>
                             )}
                             {showUnitsColumns.includes('PALLETS') && (
-                              <th key={`pallets-header-${date}`}>PALLETS </th>
+                              <th key={`pallets-total-header-${formattedDate}`}>
+                                <span
+                                  datatotal={lineData.PALLETS[dateIndex]}
+                                  className='head_total'
+                                  id={`total-${formattedDate}_PALLETS`}
+                                >
+                                  {formatWithCommas(
+                                    lineData.PALLETS[dateIndex]
+                                  )}
+                                </span>
+                              </th>
                             )}
                             {showUnitsColumns.includes('ABSORPTION') && (
-                              <th key={`absorption-header-${date}`}>
-                                ABSORPTION{' '}
+                              <th
+                                key={`absorption-total-header-${formattedDate}`}
+                              >
+                                <span
+                                  datatotal={lineData.ABSORPTION[dateIndex]}
+                                  className='head_total'
+                                  id={`total-${formattedDate}_ABSORPTION`}
+                                >
+                                  {formatWithCommas(
+                                    lineData.ABSORPTION[dateIndex]
+                                  )}
+                                </span>
                               </th>
                             )}
                           </React.Fragment>
-                        ))
-                      })}
-                      {/* ------------------------------End Date based header start here--------------------  */}
-                    </tr>
-                    {/* --------------------------------- Totals -------------------------------------- */}
-                    {showUnitsColumns && showUnitsColumns.length > 0 ? (
-                      <tr>
-                        <th
-                          className='sticky dm-custom-total first_cell'
-                          colSpan={showTableColumns.length + 2}
-                        ></th>
-                        {Object.keys(demandLoadAgg).map((lineKey, index) => {
-                          const lineData = demandLoadAgg[lineKey]
-                          return lineData.DATE.map((date, dateIndex) => {
-                            const formattedDate = date.replace(/-/g, '_') // Change date format
-                            return (
-                              <React.Fragment
-                                key={`units-header-${formattedDate}-${dateIndex}`}
-                              >
-                                {showUnitsColumns.includes('HOURS') && (
-                                  <th
-                                    key={`hours-total-header-${formattedDate}`}
-                                  >
-                                    <span
-                                      datatotal={lineData.HOURS[dateIndex]}
-                                      className='head_total'
-                                      id={`total-${formattedDate}_HOURS`}
-                                    >
-                                      {formatWithCommas(
-                                        lineData.HOURS[dateIndex]
-                                      )}
-                                    </span>
-                                  </th>
-                                )}
-                                {showUnitsColumns.includes('QTY') && (
-                                  <th key={`qty-total-header-${formattedDate}`}>
-                                    <span
-                                      datatotal={lineData.QTY[dateIndex]}
-                                      className='head_total'
-                                      id={`total-${formattedDate}_QTY`}
-                                    >
-                                      {formatWithCommas(
-                                        lineData.QTY[dateIndex]
-                                      )}
-                                    </span>
-                                  </th>
-                                )}
-                                {showUnitsColumns.includes('BATCHES') && (
-                                  <th
-                                    key={`batches-total-header-${formattedDate}`}
-                                  >
-                                    <span
-                                      datatotal={lineData.BATCHES[dateIndex]}
-                                      className='head_total'
-                                      id={`total-${formattedDate}_BATCHES`}
-                                    >
-                                      {formatWithCommas(
-                                        lineData.BATCHES[dateIndex]
-                                      )}
-                                    </span>
-                                  </th>
-                                )}
-                                {showUnitsColumns.includes('PALLETS') && (
-                                  <th
-                                    key={`pallets-total-header-${formattedDate}`}
-                                  >
-                                    <span
-                                      datatotal={lineData.PALLETS[dateIndex]}
-                                      className='head_total'
-                                      id={`total-${formattedDate}_PALLETS`}
-                                    >
-                                      {formatWithCommas(
-                                        lineData.PALLETS[dateIndex]
-                                      )}
-                                    </span>
-                                  </th>
-                                )}
-                                {showUnitsColumns.includes('ABSORPTION') && (
-                                  <th
-                                    key={`absorption-total-header-${formattedDate}`}
-                                  >
-                                    <span
-                                      datatotal={lineData.ABSORPTION[dateIndex]}
-                                      className='head_total'
-                                      id={`total-${formattedDate}_ABSORPTION`}
-                                    >
-                                      {formatWithCommas(
-                                        lineData.ABSORPTION[dateIndex]
-                                      )}
-                                    </span>
-                                  </th>
-                                )}
-                              </React.Fragment>
-                            )
-                          })
-                        })}
-                      </tr>
-                    ) : null}
-                    {/* --------------------------------- End Totals -------------------------------------- */}
-                  </thead>
-                  <tbody>
-                    {/* ------------------------------Dynamic tbody start ------------ */}
-                    {Object.keys(filterDemandInputsData).map((lineKey) => {
-                      const lineData = filterDemandInputsData[lineKey] // Access lineData using lineKey
-                      return (
-                        <Row
-                          key={lineKey}
-                          lineKey={lineKey}
-                          lineData={lineData}
-                        />
-                      )
+                        )
+                      })
                     })}
-                    {/* ------------------------------Dynamic tbody end ------------ */}
-                  </tbody>
-                </table>
-              </div>
-              {/*  Ldmodal display column  */}
-              <LdModal
-                blurryBackdrop
-                open={isFilterColumModal}
-                onLdmodalclosed={() => setIsFilterColumModal(false)}
-                cancelable={true}
-              >
-                <LdTypo slot='header'>Columns to Display</LdTypo>
-                <div className='max-h-[300px] overflow-y-scroll hide-scrollbar'>
-                  {allColumns.map((column) => (
-                    <div
-                      key={`column-display-${column}`}
-                      className='flex items-center mb-2'
-                    >
-                      <LdCheckbox
-                        checked={filterColumns.includes(column)}
-                        onLdchange={() =>
-                          setFilterColumns((prev) =>
-                            prev.includes(column)
-                              ? prev.filter((item) => item !== column)
-                              : [...prev, column]
-                          )
-                        }
-                      />
-                      <LdTypo className='ml-2'>
-                        {column.replace(/_/g, ' ')}
-                      </LdTypo>
-                    </div>
-                  ))}
+                  </tr>
+                ) : null}
+                {/* --------------------------------- End Totals -------------------------------------- */}
+              </thead>
+              <tbody>
+                {/* ------------------------------Dynamic tbody start ------------ */}
+                {Object.keys(filterDemandInputsData).map((lineKey) => {
+                  const lineData = filterDemandInputsData[lineKey] // Access lineData using lineKey
+                  return (
+                    <Row key={lineKey} lineKey={lineKey} lineData={lineData} />
+                  )
+                })}
+                {/* ------------------------------Dynamic tbody end ------------ */}
+              </tbody>
+            </table>
+          </div>
+          {/*  Ldmodal display column  */}
+          <LdModal
+            blurryBackdrop
+            open={isFilterColumModal}
+            onLdmodalclosed={() => setIsFilterColumModal(false)}
+            cancelable={true}
+          >
+            <LdTypo slot='header'>Columns to Display</LdTypo>
+            <div className='max-h-[300px] overflow-y-scroll hide-scrollbar'>
+              {allColumns.map((column) => (
+                <div
+                  key={`column-display-${column}`}
+                  className='flex items-center mb-2'
+                >
+                  <LdCheckbox
+                    checked={filterColumns.includes(column)}
+                    onLdchange={() =>
+                      setFilterColumns((prev) =>
+                        prev.includes(column)
+                          ? prev.filter((item) => item !== column)
+                          : [...prev, column]
+                      )
+                    }
+                  />
+                  <LdTypo className='ml-2'>{column.replace(/_/g, ' ')}</LdTypo>
                 </div>
-              </LdModal>
-              {/* End display column */}
-              {/*  Ldmodal Add New SKU column  */}
-              <LdModal blurryBackdrop cancelable={true} ref={isAddNewSkuModal}>
-                <LdTypo slot='header'>Add new SKU</LdTypo>
-                <div className='max-h-[200px] w-[400px]'>
-                  <div className='flex flex-col mb-2 '>
-                    <LdTypo variant='h6'>
-                      Select the line you want to add the SKU to:
-                    </LdTypo>
-                    <select
-                      className='flex-none w-full mt-4 mb-4 border addNewskuSelect'
-                      onChange={(e) => handleNewSkuselection(e.target.value)}
-                    >
-                      {Lines && Lines.length === 0 ? (
-                        <option disabled>No matches found</option>
-                      ) : (
-                        Lines.map((line) => (
-                          // !simulationNewLine.includes(line) && (
-                          <option key={`line-select-${line}`} value={line}>
-                            {line}
-                          </option>
-                          // )
-                        ))
-                      )}
-                    </select>
-                  </div>
-                </div>
-                <div className='flex justify-center mt-6'>
-                  <LdButton
-                    size='sm'
-                    className='ld-theme-tea w-full mx-auto '
-                    onClick={addNewSkuAPIcall}
-                  >
-                    <LdIcon size='sm' name='checkmark' /> Add New Row
-                  </LdButton>
-                </div>
-              </LdModal>
-              {/* End new SKU column */}
+              ))}
             </div>
-          ) : (
-            <div>No Demand Input table Data Available for selected Lines</div>
-          )}
+          </LdModal>
+          {/* End display column */}
+          {/*  Ldmodal Add New SKU column  */}
+          <LdModal blurryBackdrop cancelable={true} ref={isAddNewSkuModal}>
+            <LdTypo slot='header'>Add new SKU</LdTypo>
+            <div className='max-h-[200px] w-[400px]'>
+              <div className='flex flex-col mb-2 '>
+                <LdTypo variant='h6'>
+                  Select the line you want to add the SKU to:
+                </LdTypo>
+                <select
+                  className='flex-none w-full mt-4 mb-4 border addNewskuSelect'
+                  onChange={(e) => handleNewSkuselection(e.target.value)}
+                >
+                  {Lines && Lines.length === 0 ? (
+                    <option disabled>No matches found</option>
+                  ) : (
+                    Lines.map((line) => (
+                      // !simulationNewLine.includes(line) && (
+                      <option key={`line-select-${line}`} value={line}>
+                        {line}
+                      </option>
+                      // )
+                    ))
+                  )}
+                </select>
+              </div>
+            </div>
+            <div className='flex justify-center mt-6'>
+              <LdButton
+                size='sm'
+                className='ld-theme-tea w-full mx-auto '
+                onClick={addNewSkuAPIcall}
+              >
+                <LdIcon size='sm' name='checkmark' /> Add New Row
+              </LdButton>
+            </div>
+          </LdModal>
+          {/* End new SKU column */}
         </div>
+      ) : (
+        <div>No Demand Input table Data Available for selected Lines</div>
       )}
-    </>
+    </div>
   )
 }
 
