@@ -1138,7 +1138,6 @@ const DemandInputTable: React.FC<DemandInputTableProps> = ({
                 {showUnitsColumns && showUnitsColumns.length > 0 ? (
                   <tr>
                     <th
-                      style={{ width: '40px' }}
                       colSpan={showTableColumns.length + 2}
                       className='sticky first_cell'
                     ></th>
@@ -1159,10 +1158,7 @@ const DemandInputTable: React.FC<DemandInputTableProps> = ({
                 {/* End First table tr start */}
                 {/*---------------- Dynamic tr with show columns table tr start------------------------- */}
                 <tr>
-                  <th
-                    style={{ width: '40px' }}
-                    className='sticky first_cell'
-                  ></th>
+                  <th className='sticky first_cell'></th>
                   <th className='sticky line_cell'>
                     LINE <span className='filter-icon'>▼</span>
                     <br />
