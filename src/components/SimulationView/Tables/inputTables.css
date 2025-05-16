@@ -186,6 +186,9 @@
   height: 36px;
   overflow: visible;
 }
+#products-table td.sticky_new {
+  background-color: #fff;
+}
 #products-table .first_cell {
   left: 0;
   width: 32px;
@@ -218,8 +221,8 @@
 }
 #products-table .LINES_NUMBER {
   left: 573px;
-  width: 72px;
-  min-width: 72px;
+  width: 108px;
+  min-width: 108px;
 }
 #products-table .UNIT_PER_PALLET {
   left: 645px;
@@ -232,14 +235,14 @@
   min-width: 85px;
 }
 #products-table .PRODRATE {
-  left: 645px;
+  left: 681px;
   width: 84px;
   min-width: 84px;
 }
 #products-table .BATCH_SIZE {
-  left: 725px;
-  width: 70px;
-  min-width: 70px;
+  left: 765px;
+  width: 90px;
+  min-width: 90px;
 }
 
 /* brand visibility */
@@ -261,7 +264,7 @@
   + .IOP_DESCR
   + .LINES_NUMBER
   + .PRODRATE {
-  left: 737px;
+  left: 773px;
 }
 #products-table
   .IOP_BRAND
@@ -270,7 +273,7 @@
   + .LINES_NUMBER
   + .PRODRATE
   + .BATCH_SIZE {
-  left: 817px;
+  left: 857px;
 }
 
 /* strength visibility */
@@ -407,7 +410,7 @@
   + .IOP_DESCR
   + .LINES_NUMBER
   + .PRODRATE {
-  left: 944px;
+  left: 980px;
 }
 #products-table
   .IOP_BRAND
@@ -417,7 +420,7 @@
   + .LINES_NUMBER
   + .PRODRATE
   + .BATCH_SIZE {
-  left: 1024px;
+  left: 1064px;
 }
 
 /* brand + unit per pallet visibility */
@@ -427,7 +430,7 @@
   + .IOP_DESCR
   + .LINES_NUMBER
   + .UNIT_PER_PALLET {
-  left: 737px;
+  left: 773px;
 }
 #products-table
   .IOP_BRAND
@@ -436,7 +439,7 @@
   + .LINES_NUMBER
   + .UNIT_PER_PALLET
   + .PRODRATE {
-  left: 807px;
+  left: 854px;
 }
 #products-table
   .IOP_BRAND
@@ -446,7 +449,7 @@
   + .UNIT_PER_PALLET
   + .PRODRATE
   + .BATCH_SIZE {
-  left: 887px;
+  left: 938px;
 }
 
 /* brand + overhead cost visibility */
@@ -456,7 +459,7 @@
   + .IOP_DESCR
   + .LINES_NUMBER
   + .OVERHEAD_COST_BY_UNIT {
-  left: 737px;
+  left: 773px;
 }
 #products-table
   .IOP_BRAND
@@ -465,7 +468,7 @@
   + .LINES_NUMBER
   + .OVERHEAD_COST_BY_UNIT
   + .PRODRATE {
-  left: 822px;
+  left: 858px;
 }
 #products-table
   .IOP_BRAND
@@ -475,7 +478,7 @@
   + .OVERHEAD_COST_BY_UNIT
   + .PRODRATE
   + .BATCH_SIZE {
-  left: 902px;
+  left: 942px;
 }
 
 /* brand + overhead cost + unit per pallet visibility */
@@ -486,7 +489,7 @@
   + .LINES_NUMBER
   + .UNIT_PER_PALLET
   + .OVERHEAD_COST_BY_UNIT {
-  left: 807px;
+  left: 854px;
 }
 #products-table
   .IOP_BRAND
@@ -496,7 +499,7 @@
   + .UNIT_PER_PALLET
   + .OVERHEAD_COST_BY_UNIT
   + .PRODRATE {
-  left: 892px;
+  left: 938px;
 }
 #products-table
   .IOP_BRAND
@@ -507,7 +510,7 @@
   + .OVERHEAD_COST_BY_UNIT
   + .PRODRATE
   + .BATCH_SIZE {
-  left: 972px;
+  left: 1022px;
 }
 
 /* strength + unit per pallet visibility */
@@ -518,7 +521,7 @@
   + .IOP_DESCR
   + .LINES_NUMBER
   + .UNIT_PER_PALLET {
-  left: 853px;
+  left: 889px;
 }
 #products-table
   .line_cell
@@ -528,7 +531,7 @@
   + .LINES_NUMBER
   + .UNIT_PER_PALLET
   + .PRODRATE {
-  left: 923px;
+  left: 970px;
 }
 #products-table
   .line_cell
@@ -539,7 +542,7 @@
   + .UNIT_PER_PALLET
   + .PRODRATE
   + .BATCH_SIZE {
-  left: 1003px;
+  left: 1054px;
 }
 /* strength + overhead cost visibility */
 #products-table
@@ -581,7 +584,7 @@
   + .LINES_NUMBER
   + .UNIT_PER_PALLET
   + .OVERHEAD_COST_BY_UNIT {
-  left: 923px;
+  left: 969px;
 }
 #products-table
   .line_cell
@@ -592,7 +595,7 @@
   + .UNIT_PER_PALLET
   + .OVERHEAD_COST_BY_UNIT
   + .PRODRATE {
-  left: 1008px;
+  left: 1053px;
 }
 #products-table
   .line_cell
@@ -604,7 +607,7 @@
   + .OVERHEAD_COST_BY_UNIT
   + .PRODRATE
   + .BATCH_SIZE {
-  left: 1088px;
+  left: 1137px;
 }
 
 /* brand + strength + unit per pallet visibility */
@@ -615,7 +618,7 @@
   + .IOP_DESCR
   + .LINES_NUMBER
   + .UNIT_PER_PALLET {
-  left: 944px;
+  left: 980px;
 }
 #products-table
   .IOP_BRAND
@@ -625,7 +628,7 @@
   + .LINES_NUMBER
   + .UNIT_PER_PALLET
   + .PRODRATE {
-  left: 1014px;
+  left: 1061px;
 }
 #products-table
   .IOP_BRAND
@@ -636,7 +639,7 @@
   + .UNIT_PER_PALLET
   + .PRODRATE
   + .BATCH_SIZE {
-  left: 1094px;
+  left: 1145px;
 }
 
 /* brand + strength + overhead cost visibility */
@@ -647,7 +650,7 @@
   + .IOP_DESCR
   + .LINES_NUMBER
   + .OVERHEAD_COST_BY_UNIT {
-  left: 944px;
+  left: 981px;
 }
 #products-table
   .IOP_BRAND
@@ -678,18 +681,9 @@
   + .IOP_PRODUCT
   + .IOP_DESCR
   + .LINES_NUMBER
-  + .UNIT_PER_PALLET {
-  left: 944px;
-}
-#products-table
-  .IOP_BRAND
-  + .IOP_STRENGTH
-  + .IOP_PRODUCT
-  + .IOP_DESCR
-  + .LINES_NUMBER
   + .UNIT_PER_PALLET
   + .OVERHEAD_COST_BY_UNIT {
-  left: 1014px;
+  left: 1061px;
 }
 #products-table
   .IOP_BRAND
@@ -700,7 +694,7 @@
   + .UNIT_PER_PALLET
   + .OVERHEAD_COST_BY_UNIT
   + .PRODRATE {
-  left: 1099px;
+  left: 1146px;
 }
 #products-table
   .IOP_BRAND
@@ -712,5 +706,5 @@
   + .OVERHEAD_COST_BY_UNIT
   + .PRODRATE
   + .BATCH_SIZE {
-  left: 1179px;
+  left: 1230px;
 }
