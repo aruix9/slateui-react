@@ -102,6 +102,7 @@ const SimulationView = () => {
     useState<CapacitySimulationData>({})
   const filterDemandInputsDataRef = useRef({})
   const [version, setVersion] = useState(0)
+  const editedInputDataRef = useRef([])
 
   const [parameterValue, setParameterValue] = useState({
     weight_avoid_delay: 5,
@@ -199,6 +200,7 @@ const SimulationView = () => {
 
       if (inputsRes && inputsRes.data) {
         setDemandInputsData(inputsRes.data)
+        editedInputDataRef.current = []
       } else {
         display_notification('alert', 'Error fetching Demand Input data')
       }
@@ -819,6 +821,7 @@ const SimulationView = () => {
                   filterDemandInputsDataRef={filterDemandInputsDataRef}
                   simulationLines={simLines}
                   onDemandSave={handleDemandSave}
+                  editedInputDataRef={editedInputDataRef}
                   getPlanDetailsLoadAgg={getPlanDetailsLoadAgg}
                 />
               </div>

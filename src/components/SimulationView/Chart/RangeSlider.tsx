@@ -173,11 +173,7 @@ const RangeSlider = ({
             min={0}
             max={generatedDates.length - 1}
             value={`${startDateValue},${endDateValue}`}
-            step={1}
             ref={refCallback}
-            stops={Array.from({ length: generatedDates.length }, (_, i) => i)
-              .slice(1)
-              .join(',')}
             onLdchange={ldOnChange}
             style={{ '--now': 9897, '--value1': endDateValue }}
           ></LdSlider>
