@@ -7,7 +7,6 @@
 
 #demandInputTbl {
   margin-top: 1rem; /* mt-4 */
-  max-height: 30rem; /* max-h-[32rem] */
   max-width: 90rem; /* max-w-[32rem] */
   width: 100%; /* w-full */
   overflow-y: auto; /* overflow-y-scroll */

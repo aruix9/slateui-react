@@ -1193,16 +1193,16 @@ const DemandInputTable: React.FC<DemandInputTableProps> = ({
                 Select Columns
               </LdButton>
             </div>
-            <div className='relative max-h-[36rem] mt-4 overflow-y-scroll overflow-x-scroll hide-scrollbar'>
+            <div className='mt-4 hide-scrollbar relative'>
               {loading && (
-                <div
-                  className='absolute inset-0 bg-wht bg-opacity-50 flex justify-center items-center z-50'
-                  style={{ top: '0' }}
-                >
+                <div className='absolute h-[36rem] inset-0 bg-wht bg-opacity-50 flex justify-center items-center z-50'>
                   <LdLoading label='Loading table data...' />
                 </div>
               )}
-              <div id='demandInputTbl'>
+              <div
+                id='demandInputTbl'
+                className='relative h-[36rem] overflow-y-scroll overflow-x-scroll'
+              >
                 <table id='products-table'>
                   <thead>
                     {/* First table tr start */}
