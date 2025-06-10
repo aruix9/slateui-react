@@ -120,3 +120,19 @@ td {
   font-size: 14px;
   color: #31464c;
 }
+
+/* home content */
+.home-content {
+  color: #fff;
+}
+.home-content .text-yellow {
+  color: #ffd7a9;
+}
+.home-content h2 {
+  font-size: 2.5rem;
+  font-weight: 300;
+}
+.home-content h4 {
+  font-size: 1.5rem;
+  font-weight: 400;
+}

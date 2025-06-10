@@ -22,10 +22,10 @@ function Home() {
           className='absolute right-6 bottom-6 z-10 w-2xl'
         />
       </div>
-      <div className='relative z-10 px-4 max-w-lg h-screen  mx-20 py-20 flex flex-col justify-center'>
+      <div className='relative z-10 home-content px-4 max-w-lg h-screen  mx-20 py-20 flex flex-col justify-center'>
         <hgroup className='mb-12'>
-          <h2 className='text-3xl'>Merck KGaA</h2>
-          <h4 className='text-xl'>Darmstadt, Germany</h4>
+          <h2>Merck KGaA</h2>
+          <h4>Darmstadt, Germany</h4>
         </hgroup>
         <LdHeader
           style={{
@@ -36,10 +36,10 @@ function Home() {
           }}
           className='rounded-lg mb-6 w-14 h-14 flex items-center justify-center'
         />
-        <h4 className='text-xl'>
+        <h4 className='text-yellow'>
           <strong>Welcome</strong> to the
         </h4>
-        <h2 className='mb-6 text-3xl'>IOP platform</h2>
+        <h2 className='mb-6 text-yellow'>IOP platform</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia fugiat
           officia in sequi explicabo, ratione excepturi placeat omnis dolor
