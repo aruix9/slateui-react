@@ -122,6 +122,12 @@ td {
 }
 
 /* home content */
+.home-page {
+  background-size: 1065px;
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-image: url(./assets/home-bg.png);
+}
 .home-content {
   color: #fff;
 }
@@ -135,4 +141,11 @@ td {
 .home-content h4 {
   font-size: 1.5rem;
   font-weight: 400;
+}
+
+/* sidebar toggle */
+.sidebar-toggle-btn {
+  height: 34px;
+  border-radius: var(--ld-br-l);
+  border: 1px solid var(--ld-thm-secondary);
 }
